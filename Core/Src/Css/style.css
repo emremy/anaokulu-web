@@ -1,0 +1,296 @@
+.single-class {
+
+    transition: all .4s;
+
+    min-height: 165px
+
+}
+
+
+
+.single-class:hover {
+
+    background: #ececec !important;
+
+    cursor: pointer
+
+}
+
+
+
+.single-class a {
+
+    opacity: 0;
+
+    transition: .4s;
+
+    margin-bottom: -15px
+
+}
+
+
+
+.single-class:hover a {
+
+    opacity: 1
+
+}
+
+
+
+.single-class h4 {
+
+    transition: .4s;
+
+    margin-top: 45px
+
+}
+
+
+
+.single-class:hover h4 {
+
+    margin-top: -5px !important
+
+}
+
+
+
+.single-aidat {
+
+    cursor: pointer
+
+}
+
+
+
+.edit-aidat {
+
+    opacity: 0;
+
+    transition: .2s
+
+}
+
+
+
+.single-aidat:hover .edit-aidat {
+
+    opacity: 1
+
+}
+
+
+
+.edit-aidat:hover {
+
+    background: #142c44 !important
+
+}
+
+
+
+.ogrenci-getir input {
+
+    width: 70%
+
+}
+
+
+
+.ogrenci-getir button {
+
+    width: 28%
+
+}
+
+
+
+.ogrenci-getir {
+
+    display: flex;
+
+    justify-content: space-between
+
+}
+
+
+
+.ogrenci-listesi {
+
+    margin-top: 0;
+
+    background: #f9f9f9;
+
+    width: 70%;
+
+    border-top: 2px solid #ececec;
+
+    border-bottom: 2px solid #ececec;
+
+    max-height: 200px !important;
+
+    overflow-y: scroll;
+
+    position: absolute;
+
+    z-index: 2;
+
+    box-shadow: 4px 5px 9px 1px #000210;
+
+}
+
+
+
+.ogrenci-listesi li {
+
+    background: #f9f9f9;
+
+    border-radius: 0 !important;
+
+    padding: 6px 13px;
+
+    color: #2d2d2d;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition: .4s
+
+}
+
+
+
+li.list-group-item:hover {
+
+    background: #e0e0e0
+
+}
+
+
+
+.ogrenci-bul {
+
+    position: relative
+
+}
+
+
+
+input::placeholder {
+
+    color: #c5c5c5 !important
+
+}
+
+
+
+.btn-primary {
+
+    background-color: #1b538c !important;
+
+    border-color: #1b538c !important
+
+}
+
+
+
+.btn-primary:hover {
+
+    background-color: #142c44 !important;
+
+    border-color: #142c44 !important
+
+}
+
+
+
+button i {
+
+    font-size: 20px !important
+
+}
+
+
+
+.navbar.fixed-bottom .d-flex h5 {
+
+    font-size: 16px;
+
+    line-height: 15px;
+
+    margin: 2px 0 0
+
+}
+
+
+
+.modal {
+
+    background: 0 0;
+
+    justify-content: center;
+
+    align-items: center
+
+}
+
+
+
+.modal-dialog {
+
+    min-width: 500px
+
+}
+
+
+
+.badge-dark {
+
+    background-color: #445969 !important
+
+}
+
+
+
+.input-group-prepend .input-group-text {
+
+    font-weight: 500
+
+}
+
+
+
+.input-group-prepend {
+
+    width: 31.8% !important
+
+}
+
+
+
+.btn-light {
+
+    background-color: #ECECEC
+
+}
+
+
+
+.btn-light:hover {
+
+    background-color: #17A2B8;
+
+    color: #fff;
+
+    border-color: #17A2B8
+
+}
+
+.list-cls > :first-child{
+    display: none;
+}
+.students-list > :first-child{
+    display:none;
+}

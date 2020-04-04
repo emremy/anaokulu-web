@@ -1,0 +1,29 @@
+RewriteEngine on
+
+RewriteCond %{REQUEST_URI} !(.*).css
+RewriteCond %{REQUEST_URI} !(.*).js
+RewriteCond %{REQUEST_URI} !(.*).jpg
+RewriteCond %{REQUEST_URI} !(.*).png
+RewriteCond %{REQUEST_URI} !(.*).ico
+RewriteCond %{REQUEST_URI} !(.*).gif
+RewriteCond %{REQUEST_URI} !(.*).fonts
+RewriteCond %{REQUEST_URI} !(.*).woff
+RewriteCond %{REQUEST_URI} !(.*).woff2
+RewriteCond %{REQUEST_URI} !(.*).ttf
+
+
+RewriteCond %{REQUEST_FILENAME} !(.*).css
+RewriteCond %{REQUEST_FILENAME} !(.*).map
+RewriteCond %{REQUEST_FILENAME} !(.*).js
+RewriteCond %{REQUEST_FILENAME} !(.*).jpg
+RewriteCond %{REQUEST_FILENAME} !(.*).png
+RewriteCond %{REQUEST_FILENAME} !(.*).ico
+RewriteCond %{REQUEST_FILENAME} !(.*).gif
+RewriteCond %{REQUEST_FILENAME} !(.*).fonts
+RewriteCond %{REQUEST_FILENAME} !(.*).woff
+RewriteCond %{REQUEST_FILENAME} !(.*).woff2
+RewriteCond %{REQUEST_FILENAME} !(.*).ttf
+
+RewriteRule ^(.*)$ index.php?_url=$1 [QSA,NC]
+
+Options -Indexes
