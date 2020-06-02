@@ -42,10 +42,12 @@
         </span>
         @component('Modal.ChangeSeason')
             @slot('Season',$Seasons)
+            @slot('SelectedSeason',$Season)
         @endcomponent
     </div>
 </nav>
 </body>
 <script src="./Core/Src/Js/bootstrap.min.js"></script>
+<script src="./Core/Src/Js/Custom/ButtonActivity/ChangeSeason.js"></script>
     @yield('script')
 </html>

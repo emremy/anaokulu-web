@@ -1,9 +1,0 @@
-<?php $_shouldextend[1]=1; ?>
-
-<?php $this->startSection('title','Admin Page'); ?>
-
-<?php $this->startSection('content'); ?>
- <?php echo static::e($name); ?>
-
-<?php $this->stopSection(); ?>
-<?php if (@$_shouldextend[1]) { echo $this->runChild('main'); } ?>

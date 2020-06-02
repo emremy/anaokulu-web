@@ -1,8 +1,0 @@
-<?php $_shouldextend[1]=1; ?>
-
-<?php $this->startSection('title','404---404'); ?>
-
-<?php $this->startSection('content'); ?>
-<p><?php echo static::e($Message); ?></p>
-<?php $this->stopSection(); ?>
-<?php if (@$_shouldextend[1]) { echo $this->runChild('main'); } ?>

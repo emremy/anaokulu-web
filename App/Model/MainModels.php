@@ -64,7 +64,7 @@ class MainModels extends Database{
     public function GetSeason(){
         $Array = array();
         $Result = $this->ListData('SELECT season,public_id FROM newnerimanhasim.period');
-        if(!empty($Resukt)){
+        if(!empty($Result)){
             for($i=0;$i<count($Result);$i++){
                 $Array[$Result[$i]['season']] = $Result[$i]['public_id'];
             }

@@ -30,6 +30,7 @@
                 <hr class="mt-3">
                 @component('Modal.ChangeSeason')
                     @slot('Season',$Seasons)
+                    @slot('SelectedSeason',$Season)
                 @endcomponent
 
                 <div class="classes d-flex flex-wrap mt-3 list-cls">
@@ -56,5 +57,6 @@
 
 @section('script')
     <script src="./Core/Src/Js/Custom/ButtonActivity/Activity.js"></script>
+    <script src="./Core/Src/Js/Custom/Ajax/AddPeriod.js"></script>
     <script src="./Core/Src/Js/Custom/Ajax/AddPeriod.js"></script>
 @endsection

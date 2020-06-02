@@ -3,7 +3,12 @@
  <select class="form-control season-list footer-list" style="max-width: 170px;margin-left: 15px;">
  <option disabled selected value></option>
  <?php $__currentLoopData = $Season; $this->addLoop($__currentLoopData); foreach($__currentLoopData as $Key => $Value): $this->incrementLoopIndices(); $loop = $this->getFirstLoop(); ?>
+ <?php if($Key == $SelectedSeason): ?>
+ <option value="<?php echo static::e($Value); ?>" selected><?php echo static::e($Key); ?></option>
+ <?php else: ?>
  <option value="<?php echo static::e($Value); ?>"><?php echo static::e($Key); ?></option>
+ <?php endif; ?>
+
  <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
  </select>
 </div>

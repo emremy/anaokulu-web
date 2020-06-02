@@ -3,7 +3,12 @@
     <select class="form-control season-list footer-list" style="max-width: 170px;margin-left: 15px;">
         <option disabled selected value></option>
         @foreach($Season as $Key => $Value)
-            <option value="{{$Value}}">{{$Key}}</option>
+            @if($Key == $SelectedSeason)
+                <option value="{{$Value}}" selected>{{$Key}}</option>
+            @else
+                <option value="{{$Value}}">{{$Key}}</option>
+            @endif
+
         @endforeach
     </select>
 </div>

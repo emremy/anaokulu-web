@@ -20,7 +20,9 @@ class HomeController extends MainController{
 
     public function index($Data){
         $this->SessionChecker(true,false);
-        return self::View('InSideHome.index',['Title'=>'Ogrenci Takip Sistemi','Seasons'=>$this->Model->GetSeason()]);
+        $Season = $this->GetDataCustom($Data,'s') == false ? '' : $this->GetDataCustom($Data,'s')[1];
+        $Information = $this->Model->GetSingleSeason($Season);
+        return self::View('InSideHome.index',['Title'=>'Ogrenci Takip Sistemi','Seasons'=>$this->Model->GetSeason(),'Season'=>$Information['seasonName'][0]['season']]);
     }
 }
 ?>

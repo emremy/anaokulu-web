@@ -8,7 +8,7 @@ AddPeriodButton.addEventListener('click',()=>{
         if (HTTP.readyState === 4){
             console.log('OK!');
             if(HTTP.status == 202){
-                setInterval("window.location='./'",1000);
+                window.location = './';
             }
         };
     };

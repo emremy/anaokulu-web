@@ -47,6 +47,8 @@ class Database{
             }
             if(!empty($PostData)){
                 return $PostData;
+            }else{
+                return false;
             }
         }else{  
             return false;
@@ -54,8 +56,8 @@ class Database{
     }
 
     public function AddData($Sql,$Data){
-        $Insert = $this->Pdo->prepare($Sql)->execute($Data)->rowCount();
-        if($Insert > 0){
+        $Insert = $this->Pdo->prepare($Sql)->execute($Data);
+        if($Insert){
             return true;
         }else{
             return false;

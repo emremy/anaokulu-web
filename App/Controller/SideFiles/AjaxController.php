@@ -23,9 +23,9 @@ class AjaxController extends MainController{
         $Season = $Data[1];
         $Result = $this->Model->SeasonAdd($Season);
         if($Result){
-            http_response_code(200);
+            return http_response_code(202);
         }else{
-            http_response_code(204);
+            return http_response_code(204);
         }
     }
 }

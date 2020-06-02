@@ -42,10 +42,12 @@
  </span>
  <?php  $this->startComponent('Modal.ChangeSeason'); ?>
  <?php  $this->slot('Season',$Seasons); ?>
+ <?php  $this->slot('SelectedSeason',$Season); ?>
  <?php  echo $this->renderComponent(); ?>
  </div>
 </nav>
 </body>
 <script src="./Core/Src/Js/bootstrap.min.js"></script>
+<script src="./Core/Src/Js/Custom/ButtonActivity/ChangeSeason.js"></script>
  <?php echo $this->yieldContent('script'); ?>
 </html>
