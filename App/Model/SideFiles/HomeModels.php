@@ -7,6 +7,8 @@ use \App\Model\MainModel\MainModels;
 
 class HomeModels extends MainModels{
     public function __construct(){
-
+        $this->customCreateTable();
     }
+
+    
 }

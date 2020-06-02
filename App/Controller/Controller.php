@@ -10,7 +10,7 @@ class MainController{
 
     public function ClearData($Data){
         for($i=0;$i<count($Data);$i++){
-            $Data[$i] = htmlentities(htmlspecialchars(trim($Data[0])));
+            $Data[$i] = htmlentities(htmlspecialchars(trim($Data[$i])));
         }
         return $Data;
     }
@@ -20,7 +20,6 @@ class MainController{
             foreach ($Data[$i] as $Key => $Value) {
                 if ($Key == $Charset) {
                     $Array = [$Key,$Value];
-
                     return $this->ClearData($Array);
                 }
             }

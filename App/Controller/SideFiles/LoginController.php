@@ -1,10 +1,8 @@
-<?php
-require _model.'SideFiles/HomeModels.php';
+<?php 
 
 use \App\Controller\Controller\MainController ;
-use \App\Model\SideFiles\HomeModels\HomeModels;
 
-class HomeController extends MainController{
+class LoginController extends MainController{
     /* 
         *    Kullanım öğrneği ;
         *       public function @RouterViewFunction($Data=null){
@@ -13,14 +11,23 @@ class HomeController extends MainController{
         *            kullanıyorsun "klasör.renderEtmekİstediğinDosya".
         *       }
     */
-    public $Model;
-    public function __construct(){
-        $this->Model = new HomeModels();
+
+    public function login(){
+        $this->SessionChecker(false,true);
+        return self::View('Home.homePage');
     }
 
-    public function index($Data){
-        $this->SessionChecker(true,false);
-        return self::View('InSideHome.index',['Title'=>'Ogrenci Takip Sistemi','Seasons'=>$this->Model->GetSeason()]);
+    public function loginCheck($Data){
+        if(!empty($Data)){
+            $Data = $this->GetDataCustom($Data,'_pass');
+            if(md5($Data[1]) == _pass){
+                $_SESSION['result'] = 'OK';
+                return http_response_code(202);
+            }
+        }
     }
 }
+
+
+
 ?>

@@ -1,3 +1,4 @@
-<script src="./Core/src/js/Login.js"></script>
+
+<script src="./Core/Src/Js/Custom/Login/Login.js"></script>
 
 

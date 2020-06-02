@@ -55,6 +55,6 @@
 @endsection
 
 @section('script')
-    <script src="./Core/Src/Js/ButtonActivity/ChangeActivity.js"></script>
-    <script src="./Core/Src/Js/Ajax/AddPeriod.js"></script>
+    <script src="./Core/Src/Js/Custom/ButtonActivity/Activity.js"></script>
+    <script src="./Core/Src/Js/Custom/Ajax/AddPeriod.js"></script>
 @endsection

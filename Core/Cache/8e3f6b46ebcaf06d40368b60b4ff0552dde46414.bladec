@@ -56,7 +56,7 @@
 <?php $this->stopSection(); ?>
 
 <?php $this->startSection('script'); ?>
- <script src="./Core/Src/Js/ButtonActivity/ChangeActivity.js"></script>
- <script src="./Core/Src/Js/Ajax/AddPeriod.js"></script>
+ <script src="./Core/Src/Js/Custom/ButtonActivity/Activity.js"></script>
+ <script src="./Core/Src/Js/Custom/Ajax/AddPeriod.js"></script>
 <?php $this->stopSection(); ?>
 <?php if (@$_shouldextend[1]) { echo $this->runChild('main'); } ?>

@@ -9,8 +9,8 @@ use \Router\Routers\Routers;
     */
 
 Routers::Router('/','Home|index');
-Routers::Router('/login','Home|login');
-Routers::Router('/loginRequest','Home|loginCheck');
+Routers::Router('/login','Login|login');
+Routers::Router('/loginRequest','Login|loginCheck');
 Routers::Router('/addSeason','Ajax|AddSeason');
 
 
