@@ -15,16 +15,17 @@ class MainController{
         return $Data;
     }
 
-    public function GetDataCustom($Data,$Charset){
+    public function GetDataCustom($Data,$Charset=[]){
         if(!empty($Data)){
             for($i=0;$i<count($Data);$i++) {
                 foreach ($Data[$i] as $Key => $Value) {
-                    if ($Key == $Charset) {
-                        $Array = [$Key,$Value];
-                        return $this->ClearData($Array);
+                    if ($Key == $Charset[$i]) {
+                        $Result = [$Key,$Value];
+                        $Val[] = $this->ClearData($Result);
                     }
                 }
             }
+            return $Val;
         }else{
             return false;
         }

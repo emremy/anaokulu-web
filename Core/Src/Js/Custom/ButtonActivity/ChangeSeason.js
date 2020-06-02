@@ -1,6 +1,9 @@
-var SeasonList = document.querySelector('.season-list');
+var SeasonList = document.querySelectorAll('.season-list');
 
-SeasonList.addEventListener('change',()=>{
-    var ID = SeasonList.options[SeasonList.selectedIndex].value;
-    window.location=`./?s=${ID}`;
-});
+SeasonList.forEach(e=>{
+    console.log(e);
+    SeasonList.addEventListener('change',()=>{
+        var ID = SeasonList.options[SeasonList.selectedIndex].value;
+        window.location=`./?s=${ID}`;
+    });
+})

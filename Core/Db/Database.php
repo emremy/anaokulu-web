@@ -64,9 +64,9 @@ class Database{
         }
     }
 
-    public function RowCount($Sql,$Data){
+    public function RowCount($Sql,$Data=[]){
         $Result = $this->Pdo->prepare($Sql);
-        $Result->execute(array(':ColumnName'=>$Data));
+        $Result->execute($Data);
         if($Result->fetchColumn() > 0){
             return $Result->fetchColumn();
         }else{

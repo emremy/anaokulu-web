@@ -287,10 +287,3 @@ button i {
     border-color: #17A2B8
 
 }
-
-.list-cls > :first-child{
-    display: none;
-}
-.students-list > :first-child{
-    display:none;
-}

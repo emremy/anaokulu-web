@@ -23,8 +23,14 @@
                     </div>
                     <div>
                         <button type="button" class="btn btn-primary" onclick="ChangeResult('period')">Dönem Ekle</button>
+                        @if (!empty($Season))
                         <button type="button" class="ml-2 btn btn-primary" onclick="ChangeResult('class')">Sınıf Ekle</button>
+                        @if (!empty($Classes))
                         <button type="button" class="ml-2 btn btn-danger" onclick="ChangeResult('deleteClass')">Sınıf Sil</button>
+                        @endif
+
+                        @endif
+
                     </div>
                 </div>
                 <hr class="mt-3">
@@ -34,16 +40,18 @@
                 @endcomponent
 
                 <div class="classes d-flex flex-wrap mt-3 list-cls">
-                    @if(!empty($Class))
-                    <div class="card single-class bg-light col-4 list-classes lists" >
-                        <div class="card-body d-flex align-items-center justify-content-center flex-column">
-                            <h4 class="card-title text-center list-class-h"></h4>
-                            <a href="./class?_Cls=3-A" class="mt-2 w-50 btn btn-primary list-class-a">Sınıfa Bak</a>
+                    @if(!empty($Classes))
+                    @foreach ($Classes as $item)
+                        <div class="card single-class bg-light col-4" >
+                            <div class="card-body d-flex align-items-center justify-content-center flex-column">
+                                <h4 class="card-title text-center list-class-h">{{$item['class_name']}}</h4>
+                                <a href="./?s={{$SeasonId}}&c={{$item['public_id']}}" class="mt-2 w-50 btn btn-primary">Sınıfa Bak</a>
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
                     @endif
                 </div>
-                @if(empty($Class))
+                @if(empty($Classes))
                 <div class="alert alert-warning">
                     <strong>Henüz Burada Bir Sınıf Bulamadık</strong><br>
                     <small>Sınıfları görüntülemek için dönem seçiniz, eğer dönem seçtikten sonra </small>
@@ -58,5 +66,5 @@
 @section('script')
     <script src="./Core/Src/Js/Custom/ButtonActivity/Activity.js"></script>
     <script src="./Core/Src/Js/Custom/Ajax/AddPeriod.js"></script>
-    <script src="./Core/Src/Js/Custom/Ajax/AddPeriod.js"></script>
+    <script src="./Core/Src/Js/Custom/Ajax/AddClass.js"></script>
 @endsection

@@ -13,9 +13,9 @@
                         <label>Bir Sınıf İsmi Yazınız:</label>
                     </div>
                     <div class="form-group mx-sm-3 mb-2">
-                        <input type="text" class="form-control" id="inputPassword2" placeholder="Sınıf İsmi">
+                        <input type="text" class="form-control add-class-input" id="inputPassword2" placeholder="Sınıf İsmi">
                     </div>
-                    <button type="submit" class="btn btn-primary mb-2">Ekle</button>
+                    <button type="button" class="btn btn-primary mb-2 add-class" id="{{$SeasonId}}">Ekle</button>
                 </form>
             </div>
         </div>

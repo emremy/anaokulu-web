@@ -7,4 +7,12 @@ function ChangeResult(Value){
              AddPeriodPanel.style.display = 'none';
         }
     }
+    if(Value =='class'){
+        var AddClassPanel = document.querySelector('#add-class');
+        if(AddClassPanel.style.display == 'none'){
+            AddClassPanel.style.display = 'flex';  
+        }else{
+            AddClassPanel.style.display = 'none';
+        }
+    }
 }

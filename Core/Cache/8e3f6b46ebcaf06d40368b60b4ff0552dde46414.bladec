@@ -24,8 +24,14 @@
  </div>
  <div>
  <button type="button" class="btn btn-primary" onclick="ChangeResult('period')">Dönem Ekle</button>
+ <?php if(!empty($Season)): ?>
  <button type="button" class="ml-2 btn btn-primary" onclick="ChangeResult('class')">Sınıf Ekle</button>
+ <?php if(!empty($Classes)): ?>
  <button type="button" class="ml-2 btn btn-danger" onclick="ChangeResult('deleteClass')">Sınıf Sil</button>
+ <?php endif; ?>
+
+ <?php endif; ?>
+
  </div>
  </div>
  <hr class="mt-3">
@@ -35,16 +41,18 @@
  <?php  echo $this->renderComponent(); ?>
 
  <div class="classes d-flex flex-wrap mt-3 list-cls">
- <?php if(!empty($Class)): ?>
- <div class="card single-class bg-light col-4 list-classes lists" >
+ <?php if(!empty($Classes)): ?>
+ <?php $__currentLoopData = $Classes; $this->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $this->incrementLoopIndices(); $loop = $this->getFirstLoop(); ?>
+ <div class="card single-class bg-light col-4" >
  <div class="card-body d-flex align-items-center justify-content-center flex-column">
- <h4 class="card-title text-center list-class-h"></h4>
- <a href="./class?_Cls=3-A" class="mt-2 w-50 btn btn-primary list-class-a">Sınıfa Bak</a>
+ <h4 class="card-title text-center list-class-h"><?php echo static::e($item['class_name']); ?></h4>
+ <a href="./?s=<?php echo static::e($SeasonId); ?>&c=<?php echo static::e($item['public_id']); ?>" class="mt-2 w-50 btn btn-primary">Sınıfa Bak</a>
  </div>
  </div>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
  <?php endif; ?>
  </div>
- <?php if(empty($Class)): ?>
+ <?php if(empty($Classes)): ?>
  <div class="alert alert-warning">
  <strong>Henüz Burada Bir Sınıf Bulamadık</strong><br>
  <small>Sınıfları görüntülemek için dönem seçiniz, eğer dönem seçtikten sonra </small>
@@ -59,6 +67,6 @@
 <?php $this->startSection('script'); ?>
  <script src="./Core/Src/Js/Custom/ButtonActivity/Activity.js"></script>
  <script src="./Core/Src/Js/Custom/Ajax/AddPeriod.js"></script>
- <script src="./Core/Src/Js/Custom/Ajax/AddPeriod.js"></script>
+ <script src="./Core/Src/Js/Custom/Ajax/AddClass.js"></script>
 <?php $this->stopSection(); ?>
 <?php if (@$_shouldextend[1]) { echo $this->runChild('main'); } ?>
