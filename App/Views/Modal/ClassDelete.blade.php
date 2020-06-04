@@ -17,7 +17,7 @@
                             <option value="{{$Key['public_id']}}" selected>{{$Key['class_name']}}</option>
                         @endforeach
                     </select>
-                <button type="button" class="btn btn-danger mb-2 delete-class-button" id="{{$ConfirmSeason}}">Sil</button>
+                <button type="button" class="btn btn-danger mb-2 delete-class-button" value="{{$ConfirmSeason}}">Sil</button>
                 </form>
             </div>
         </div>

@@ -7,10 +7,10 @@ DeleteClassButton.addEventListener('click',()=>{
         if (HTTP.readyState === 4){
             console.log('OK!');
             if(HTTP.status == 202){
-                window.location = `./?s=${DeleteClassButton.id}`;
+                window.location = `./?s=${DeleteClassButton.value}`;
             }
         };
     };
-    HTTP.open('GET', `deleteClass?classID=${Data}&seasonID=${DeleteClassButton.id}`);
+    HTTP.open('GET', `deleteClass?classID=${Data}&seasonID=${DeleteClassButton.value}`);
     HTTP.send()
 });

@@ -15,7 +15,7 @@
                     <div class="form-group mx-sm-3 mb-2">
                         <input type="text" class="form-control add-class-input" id="inputPassword2" placeholder="Sınıf İsmi">
                     </div>
-                    <button type="button" class="btn btn-primary mb-2 add-class" id="{{$SeasonId}}">Ekle</button>
+                    <button type="button" class="btn btn-primary mb-2 add-class" value="{{$SeasonId}}">Ekle</button>
                 </form>
             </div>
         </div>

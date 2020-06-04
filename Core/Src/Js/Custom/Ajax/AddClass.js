@@ -6,10 +6,10 @@ AddClassButton.addEventListener('click',()=>{
         if (HTTP.readyState === 4){
             console.log('OK!');
             if(HTTP.status == 202){
-                window.location = `./?s=${AddClassButton.id}`;
+                window.location = `./?s=${AddClassButton.value}`;
             }
         };
     };
-    HTTP.open('GET', `addClass?ClassName=${Data}&seasonID=${AddClassButton.id}`);
+    HTTP.open('GET', `addClass?ClassName=${Data}&seasonID=${AddClassButton.value}`);
     HTTP.send()
 });

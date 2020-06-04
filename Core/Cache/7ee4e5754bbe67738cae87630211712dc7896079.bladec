@@ -17,7 +17,7 @@
  <option value="<?php echo static::e($Key['public_id']); ?>" selected><?php echo static::e($Key['class_name']); ?></option>
  <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
  </select>
- <button type="button" class="btn btn-danger mb-2 delete-class-button" id="<?php echo static::e($ConfirmSeason); ?>">Sil</button>
+ <button type="button" class="btn btn-danger mb-2 delete-class-button" value="<?php echo static::e($ConfirmSeason); ?>">Sil</button>
  </form>
  </div>
  </div>
