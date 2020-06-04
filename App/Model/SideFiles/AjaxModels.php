@@ -40,7 +40,6 @@ class AjaxModels extends MainModels{
 
     public function ClassDelete($ClassID,$SeasonID){
         $ReturnData = $this->RowCount('SELECT * FROM newnerimanhasim.class WHERE public_id=:ColumnName AND season_id=:SeasonID',[':ColumnName'=>$ClassID,':SeasonID'=>$SeasonID]);        
-
         if($ReturnData > 0){
             $DeleteClass = $this->DeleteData('DELETE FROM newnerimanhasim.class WHERE public_id=:PublicID AND season_id=:SeasonID',[':PublicID'=>$ClassID,':SeasonID'=>$SeasonID]);
 

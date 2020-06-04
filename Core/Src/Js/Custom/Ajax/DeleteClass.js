@@ -7,7 +7,7 @@ DeleteClassButton.addEventListener('click',()=>{
         if (HTTP.readyState === 4){
             console.log('OK!');
             if(HTTP.status == 202){
-                window.location = `/`;
+                window.location = `./?s=${DeleteClassButton.id}`;
             }
         };
     };

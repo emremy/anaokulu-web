@@ -48,7 +48,6 @@ class AjaxController extends MainController{
         $ClassID = $Data[0][1];
         $ResultData = $this->Model->ClassDelete($ClassID,$SeasonID);
         if($ResultData){
-
             return http_response_code(202);
         }else{
             return http_response_code(204);

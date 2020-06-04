@@ -68,9 +68,9 @@ class Database{
         $Result = $this->Pdo->prepare($Sql);
         $Result->execute($Data);
         if($Result->fetchColumn() > 0){
-            return $Result->fetchColumn();
+            return 1;
         }else{
-            return 0;
+            return false;
         }
 
     }
