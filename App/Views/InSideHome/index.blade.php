@@ -45,7 +45,7 @@
                         <div class="card single-class bg-light col-4" >
                             <div class="card-body d-flex align-items-center justify-content-center flex-column">
                                 <h4 class="card-title text-center list-class-h">{{$item['class_name']}}</h4>
-                                <a href="./?s={{$SeasonId}}&c={{$item['public_id']}}" class="mt-2 w-50 btn btn-primary">Sınıfa Bak</a>
+                                <a href="./students?s={{$SeasonId}}&c={{$item['public_id']}}" class="mt-2 w-50 btn btn-primary">Sınıfa Bak</a>
                             </div>
                         </div>
                     @endforeach
