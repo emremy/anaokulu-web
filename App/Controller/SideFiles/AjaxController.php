@@ -40,4 +40,18 @@ class AjaxController extends MainController{
             return http_response_code(204);
         }
     }
+
+    public function DeleteClass($Data){
+        $Data = $this->GetDataCustom($Data,['classID','seasonID']);
+        
+        $SeasonID = $Data[1][1];
+        $ClassID = $Data[0][1];
+        $ResultData = $this->Model->ClassDelete($ClassID,$SeasonID);
+        if($ResultData){
+
+            return http_response_code(202);
+        }else{
+            return http_response_code(204);
+        }
+    }
 }

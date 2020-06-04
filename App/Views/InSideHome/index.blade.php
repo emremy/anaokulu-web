@@ -12,6 +12,8 @@
     @component('Modal.ClassAdd')
     @endcomponent
     @component('Modal.ClassDelete')
+        @slot('DeleteClasses',$Classes)
+        @slot('ConfirmSeason',$SeasonId)
     @endcomponent
 <div class="container">
     <div class="row" style="margin-bottom: 80px;">
@@ -25,12 +27,10 @@
                         <button type="button" class="btn btn-primary" onclick="ChangeResult('period')">Dönem Ekle</button>
                         @if (!empty($Season))
                         <button type="button" class="ml-2 btn btn-primary" onclick="ChangeResult('class')">Sınıf Ekle</button>
+                        @endif
                         @if (!empty($Classes))
                         <button type="button" class="ml-2 btn btn-danger" onclick="ChangeResult('deleteClass')">Sınıf Sil</button>
                         @endif
-
-                        @endif
-
                     </div>
                 </div>
                 <hr class="mt-3">
@@ -67,4 +67,5 @@
     <script src="./Core/Src/Js/Custom/ButtonActivity/Activity.js"></script>
     <script src="./Core/Src/Js/Custom/Ajax/AddPeriod.js"></script>
     <script src="./Core/Src/Js/Custom/Ajax/AddClass.js"></script>
+    <script src="./Core/Src/Js/Custom/Ajax/DeleteClass.js"></script>
 @endsection

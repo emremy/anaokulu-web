@@ -13,4 +13,5 @@ Routers::Router('/login','Login|login');
 Routers::Router('/loginRequest','Login|loginCheck');
 Routers::Router('/addSeason','Ajax|AddSeason');
 Routers::Router('/addClass','Ajax|AddClass');
+Routers::Router('/deleteClass','Ajax|DeleteClass');
 

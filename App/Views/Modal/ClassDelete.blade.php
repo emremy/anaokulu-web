@@ -12,17 +12,12 @@
                     <div class="form-group mb-2">
                         <label>Sınıf Seçiniz:</label>
                     </div>
-                    <select class="form-control mx-3 mb-2" style="max-width: 170px;margin-left: 15px;">
-                        <option>3 / A</option>
-                        <option>4 / B</option>
-                        <option>4 / C</option>
-                        <option>4 / D</option>
-                        <option>5 / A</option>
-                        <option>5 / B</option>
-                        <option>5 / C</option>
-                        <option>5 / D</option>
+                    <select class="form-control mx-3 mb-2 delete-class-select" style="max-width: 170px;margin-left: 15px;">
+                        @foreach($DeleteClasses as $Key)
+                            <option value="{{$Key['public_id']}}" selected>{{$Key['class_name']}}</option>
+                        @endforeach
                     </select>
-                    <button type="submit" class="btn btn-danger mb-2">Sil</button>
+                <button type="button" class="btn btn-danger mb-2 delete-class-button" id="{{$ConfirmSeason}}">Sil</button>
                 </form>
             </div>
         </div>

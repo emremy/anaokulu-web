@@ -74,4 +74,14 @@ class Database{
         }
 
     }
+
+    public function DeleteData($Sql,$Data=[]){
+        $Result = $this->Pdo->prepare($Sql);
+        $Result->execute($Data);
+        if($Result->rowCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

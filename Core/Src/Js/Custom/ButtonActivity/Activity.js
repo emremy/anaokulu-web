@@ -15,4 +15,12 @@ function ChangeResult(Value){
             AddClassPanel.style.display = 'none';
         }
     }
+    if(Value == 'deleteClass'){
+        var DeleteClassPanel = document.querySelector('#delete-class');
+        if(DeleteClassPanel.style.display == 'none'){
+            DeleteClassPanel.style.display = 'flex';  
+        }else{
+            DeleteClassPanel.style.display = 'none';
+        }
+    }
 }
