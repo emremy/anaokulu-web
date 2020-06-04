@@ -19,8 +19,8 @@ class LoginController extends MainController{
 
     public function loginCheck($Data){
         if(!empty($Data)){
-            $Data = $this->GetDataCustom($Data,'_pass');
-            if(md5($Data[1]) == _pass){
+            $Data = $this->GetDataCustom($Data,['_pass']);
+            if(md5($Data[0][1]) == _pass){
                 $_SESSION['result'] = 'OK';
                 return http_response_code(202);
             }
