@@ -57,4 +57,10 @@ class AjaxModels extends MainModels{
             return false;
         }
     }
+
+    public function AddStudent($Data,$ClassID,$SeasonID){
+        $PublicId = $this->RandomKey('newnerimanhasim.students','public_id');
+        $PublicIdStundetInfo = $this->RandomKey('newnerimanhasim.studentinfo','public_id');
+        
+    }
 }

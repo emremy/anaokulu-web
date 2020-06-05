@@ -12,7 +12,7 @@
     </thead>
     <tbody>
         <tr>
-            <td class="align-middle">{{ index }}</td>
+            <td class="align-middle"></td>
             <td class="align-middle">Gülfidan Eylül Akkuş</td>
             <td class="align-middle">18084568741</td>
             <td class="align-middle">

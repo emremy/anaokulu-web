@@ -20,8 +20,15 @@ class StudentsController extends MainController{
 
     public function index($Data){
         $this->SessionChecker(true,false);
-        echo "selam";
-        // return self::View('InSideHome.index',['Title'=>'Ogrenci Takip Sistemi','Seasons'=>$this->Model->GetSeason(),'Season'=>$SeasonName,'Classes'=>$Classes,'SeasonId'=>$SeasonID]);
+        $Data = $this->GetDataCustom($Data,['s','c']);
+        $SeasonID = $Data[0][1];
+        $ClassID = $Data[1][1];
+        $Information = $this->Model->GetSingleSeason($SeasonID);
+        $SeasonName = $Information['seasonName'][0]['season'];
+        $SeasonID = $Information['seasonName'][0]['public_id'];
+        $Classes = $Information['class'];
+        // $ClassesInfo = $this->Model->GetClasses($ClassID);
+        return self::View('Students.index',['Title'=>'asdsada','Seasons'=>$this->Model->GetSeason(),'Season'=>$SeasonName,'Classes'=>$Classes,'SeasonId'=>$SeasonID]);
     }
 }
 ?>

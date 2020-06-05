@@ -1,0 +1,53 @@
+.btn-light{
+    background-color: #ECECEC;
+  }
+  .btn-light:hover{
+    background-color: #17A2B8;
+    color: #fff;
+    border-color: #17A2B8;
+  }
+  .single-class {
+    transition: all .4s;
+    min-height: 165px;
+  }
+  .class-name{
+    line-height: 36px;
+  }
+  .single-class:hover {
+    background: #ececec !important;
+    cursor: pointer;
+  }
+  .button-due-detail i {
+        font-size: 24px;
+  }
+  .button-due-detail {
+        padding:4px 10px 5px;
+       font-size: 20px!important;
+       line-height: 20px
+  }
+  .single-class a {
+    opacity: 0;
+    transition: 0.4s;
+    margin-bottom: -15px;
+  }
+  
+  .single-class:hover a {
+    opacity: 1;
+  }
+  
+  .single-class h4 {
+    transition: 0.4s;
+    margin-top: 45px;
+  }
+  
+  .single-class:hover h4 {
+    margin-top: -5px !important;
+  }
+  .badge-dark{
+      background-color: #445969!important;
+  }
+  .navbar.fixed-bottom .d-flex h5 {
+    font-size: 16px;
+    line-height: 15px;
+    margin: 2px 0 0 0;
+  }

@@ -23,4 +23,12 @@ function ChangeResult(Value){
             DeleteClassPanel.style.display = 'none';
         }
     }
+    if(Value == 'addStudent'){
+        var AddStudentPanel = document.querySelector('.add-student-panel');
+        if(AddStudentPanel.style.display == 'none'){
+            AddStudentPanel.style.display = 'flex';  
+        }else{
+            AddStudentPanel.style.display = 'none';
+        }
+    }
 }
