@@ -3130,6 +3130,7 @@ class BladeOne
             return \call_user_func_array($this->injectResolver, [$className, $variableName]);
         } else {
             $fullClassName = $className . "\\" . $variableName;
+            // $fullClassName = $className;
             return new $fullClassName();
         }
     }

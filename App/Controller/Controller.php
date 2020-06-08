@@ -68,6 +68,8 @@ class MainController{
         }
     }
 
+ 
+
     public function View($Path,$Data=null){
         $ViewFile = _view;
         $CompiledFolder = _core.'/Cache';

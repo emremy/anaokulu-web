@@ -11,17 +11,30 @@
  </tr>
  </thead>
  <tbody>
+ <?php 
+ function ChangePhoneNumber($Number){
+ $Result = sprintf(
+ "(%s)-%s-%s-%s",
+ substr($Number, 0, 3),
+ substr($Number, 3, 3),
+ substr($Number, 5,2),
+ substr($Number, 8,9)
+ );
+ return $Result;
+ }    
+ ?>
+ <?php $__currentLoopData = $Students; $this->addLoop($__currentLoopData); foreach($__currentLoopData as $Student): $this->incrementLoopIndices(); $loop = $this->getFirstLoop(); ?>
  <tr>
- <td class="align-middle"></td>
- <td class="align-middle">Gülfidan Eylül Akkuş</td>
- <td class="align-middle">18084568741</td>
+ <td class="align-middle"></td>  
+ <td class="align-middle"><?php echo static::e($Student['name']); ?> <?php echo static::e($Student['surname']); ?></td>
+ <td class="align-middle"><?php echo static::e($Student['tcno']); ?></td>
  <td class="align-middle">
- Beyhan Yılmaz<span class="ml-2 badge badge-dark">(505)-789-4512</span>
+ <?php echo static::e($Student['mtname']); ?><span class="ml-2 badge badge-dark"><?php echo static::e(ChangePhoneNumber($Student['mtnumber'])); ?></span>
  </td>
  <td class="align-middle">
- Adem Akkuş<span class="ml-2 badge badge-dark">(505)-789-4512</span>
+ <?php echo static::e($Student['ftname']); ?><span class="ml-2 badge badge-dark"><?php echo static::e(ChangePhoneNumber($Student['ftnumber'])); ?></span>
  </td>
- <td class="align-middle">(505)-789-4512<span class="ml-2 badge badge-dark">Abisi</span>
+ <td class="align-middle"><?php echo static::e(ChangePhoneNumber($Student['othernumber'])); ?><span class="ml-2 badge badge-dark"><?php echo static::e($Student['othername']); ?></span>
  </td>
  <td class="align-middle text-center">
  <router-link tag="button" to="/aidatlar" type="button" class="btn btn-info button-due-detail">
@@ -29,5 +42,6 @@
  </router-link>
  </td>
  </tr>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
  </tbody>
 </table>

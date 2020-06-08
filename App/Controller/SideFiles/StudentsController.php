@@ -27,8 +27,18 @@ class StudentsController extends MainController{
         $SeasonName = $Information['seasonName'][0]['season'];
         $SeasonID = $Information['seasonName'][0]['public_id'];
         $Classes = $Information['class'];
-        // $ClassesInfo = $this->Model->GetClasses($ClassID);
-        return self::View('Students.index',['Title'=>'asdsada','Seasons'=>$this->Model->GetSeason(),'Season'=>$SeasonName,'Classes'=>$Classes,'SeasonId'=>$SeasonID]);
+        $ClassesInfo = $this->Model->GetClasses($ClassID);
+        $ReturnValue = [
+            'Title'=>$ClassesInfo['ClassName']." Sınıfı",
+            'Seasons'=>$this->Model->GetSeason(),
+            'Season'=>$SeasonName,
+            'Classes'=>$Classes,
+            'SeasonId'=>$SeasonID,
+            'ClassName'=>$ClassesInfo['ClassName'],
+            'ClassCount'=>$ClassesInfo['ClassCount'],
+            'Students'=>$ClassesInfo['Students']
+        ];
+        return self::View('Students.index',$ReturnValue);
     }
 }
 ?>

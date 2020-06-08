@@ -33,7 +33,7 @@
                   @endcomponent
                 </form>
                 <hr class="mt-2">
-                <button type="submit" class="px-5 btn btn-primary">Kaydet</button>
+                <button type="submit" class="px-5 btn btn-primary" id="add-student">Kaydet</button>
             </div>
         </div>
     </div>
