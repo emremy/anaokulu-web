@@ -53,4 +53,9 @@ class AjaxController extends MainController{
             return http_response_code(204);
         }
     }
+
+    public function AddStudent($Data){
+        $Data = $this->GetDataCustom($Data,['Change','ClassID','SeasonID','StudentName','StudentSurname','StudentTc','StudentMtName','StudentMtNumber','StudentFtName','StudentFtNumber','StudentOName','StudentONumber']);
+        var_dump($Data);
+    }
 }

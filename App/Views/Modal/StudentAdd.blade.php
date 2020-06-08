@@ -20,7 +20,7 @@
                         <div class="input-group-prepend">
                             <div class="input-group-text w-100">Sınıfı:</div>
                         </div>
-                        <select class="form-control">
+                        <select class="form-control add-s-cl-id">
                             @if(!empty($Classes))
                                 @foreach ($Classes as $item)
                                     <option value="{{$item['public_id']}}">{{$item['class_name']}}</option>
@@ -33,7 +33,8 @@
                   @endcomponent
                 </form>
                 <hr class="mt-2">
-                <button type="submit" class="px-5 btn btn-primary" id="add-student">Kaydet</button>
+            <input type="hidden" id="S-I" value="{{$SeasonId}}">
+            <button type="submit" class="px-5 btn btn-primary student-request" id="{{$Change}}">Kaydet</button>
             </div>
         </div>
     </div>

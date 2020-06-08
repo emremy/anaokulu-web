@@ -50,5 +50,6 @@
 <?php $this->startSection('script'); ?>
  <script src="./Core/Src/Js/Custom/ButtonActivity/Activity.js"></script>
  <script src="./Core/Src/Js/Custom/ButtonActivity/ReturnPage.js"></script>
+ <script src="./Core/Src/Js/Custom/Ajax/AddStudent.js"></script>
 <?php $this->stopSection(); ?>
 <?php if (@$_shouldextend[1]) { echo $this->runChild('main'); } ?>

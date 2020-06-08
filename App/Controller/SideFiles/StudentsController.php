@@ -36,7 +36,8 @@ class StudentsController extends MainController{
             'SeasonId'=>$SeasonID,
             'ClassName'=>$ClassesInfo['ClassName'],
             'ClassCount'=>$ClassesInfo['ClassCount'],
-            'Students'=>$ClassesInfo['Students']
+            'Students'=>$ClassesInfo['Students'],
+            'Change'=>'add'
         ];
         return self::View('Students.index',$ReturnValue);
     }

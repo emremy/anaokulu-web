@@ -13,5 +13,4 @@ if(count($_REQUEST) > 1){
 }else{
     Routers::Get('/'.$Url[0]);
 }
-
 ?>

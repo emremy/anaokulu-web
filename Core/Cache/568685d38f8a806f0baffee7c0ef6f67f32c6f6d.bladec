@@ -20,7 +20,7 @@
  <div class="input-group-prepend">
  <div class="input-group-text w-100">Sınıfı:</div>
  </div>
- <select class="form-control">
+ <select class="form-control add-s-cl-id">
  <?php if(!empty($Classes)): ?>
  <?php $__currentLoopData = $Classes; $this->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $this->incrementLoopIndices(); $loop = $this->getFirstLoop(); ?>
  <option value="<?php echo static::e($item['public_id']); ?>"><?php echo static::e($item['class_name']); ?></option>
@@ -33,7 +33,8 @@
  <?php  echo $this->renderComponent(); ?>
  </form>
  <hr class="mt-2">
- <button type="submit" class="px-5 btn btn-primary">Kaydet</button>
+ <input type="hidden" id="S-I" value="<?php echo static::e($SeasonId); ?>">
+ <button type="submit" class="px-5 btn btn-primary student-request" id="<?php echo static::e($Change); ?>">Kaydet</button>
  </div>
  </div>
  </div>
