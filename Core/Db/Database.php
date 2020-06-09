@@ -37,6 +37,7 @@ class Database{
     public function Connect(){
         $this->Pdo = new PDO("mysql:host=$this->Host;port=$this->Port;Dbname=$this->DatabaseName;charset=utf8", $this->DatabaseUser, $this->DatabasePassword);
         $this->Pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+        $this->Pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     public function ListData($Sql,$Data=[]){
@@ -55,7 +56,7 @@ class Database{
         }
     }
 
-    public function AddData($Sql,$Data){
+    public function AddData($Sql,$Data=[]){
         $Insert = $this->Pdo->prepare($Sql)->execute($Data);
         if($Insert){
             return true;

@@ -10,7 +10,7 @@ class MainModels extends Database{
         $this->CreateTable('students',[
             'id' => 'INT(11) AUTO_INCREMENT PRIMARY KEY',
             'public_id' => 'INT(6) NOT NULL UNIQUE',
-            'name' => 'VARCHAR(25) NOT NULL',
+            'sname' => 'VARCHAR(25) NOT NULL',
             'surname' => 'VARCHAR(40) NOT NULL',
             'tcno' => 'BIGINT(11) NOT NULL UNIQUE',
             'mtname' => 'VARCHAR(25) NOT NULL',
@@ -22,10 +22,10 @@ class MainModels extends Database{
         ]);
         $this->CreateTable('studentInfo',[
             'id' => 'INT(11) AUTO_INCREMENT PRIMARY KEY',
-            'public_id' => 'INT(6) NOT NULL UNIQUE',
-            'student_id' => 'INT(6) NOT NULL UNIQUE',
-            'class_id' => 'INT(6) NOT NULL UNIQUE',
-            'period_id' => 'INT(6) NOT NULL UNIQUE',
+            'public_id' => 'INT(6) NOT NULL',
+            'student_id' => 'INT(6) NOT NULL',
+            'class_id' => 'INT(6) NOT NULL',
+            'period_id' => 'INT(6) NOT NULL',
         ]);
         $this->CreateTable('dues',[
             'id' => 'INT(11) AUTO_INCREMENT PRIMARY KEY',
@@ -54,7 +54,7 @@ class MainModels extends Database{
     public function RandomKey($TableName,$Column){
         while(true){
             $RandomKey = rand(1,99999);
-            $Count = $this->RowCount("SELECT COUNT(*) FROM $TableName WHERE $Column=:ColumnName",$RandomKey);
+            $Count = $this->RowCount("SELECT COUNT(*) FROM $TableName WHERE $Column=:ColumnName",['ColumnName'=>$RandomKey]);
             if($Count == 0){
                 break;
             }

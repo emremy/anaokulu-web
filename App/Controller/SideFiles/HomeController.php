@@ -22,6 +22,7 @@ class HomeController extends MainController{
         $this->SessionChecker(true,false);
         $Season = $this->GetDataCustom($Data,['s']) == false ? '' : $this->GetDataCustom($Data,['s'])[0][1];
         $Information = $this->Model->GetSingleSeason($Season);
+
         $SeasonName = $Information['seasonName'][0]['season'];
         $SeasonID = $Information['seasonName'][0]['public_id'];
         $Classes = $Information['class'];

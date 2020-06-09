@@ -58,9 +58,28 @@ class AjaxModels extends MainModels{
         }
     }
 
-    public function AddStudent($Data,$ClassID,$SeasonID){
-        $PublicId = $this->RandomKey('newnerimanhasim.students','public_id');
-        $PublicIdStundetInfo = $this->RandomKey('newnerimanhasim.studentinfo','public_id');
-        
+    public function StudentActivity($Array){
+        // var_dump($Array);
+        if($Array['Activity'] == 'add'){
+            
+            $CheckStudent = $this->RowCount('SELECT * FROM newnerimanhasim.students WHERE name=:CName AND tcno=:TC',[':CName'=>$Array['Name'],':TC'=>$Array['Tc']]);
+            if($CheckStudent > 0){
+                $Result = $this->ListData('SELECT public_id FROM newnerimanhasim.students WHERE name=:CName AND surname=:SurName AND tcno=:TC',['CName'=>$Array['name'],'SurName'=>$Array['SurName'],'TC'=>$Array['Tc']]);
+                $PublicId = $Result[0]['public_id'];
+
+            }else{
+                $PublicId = $this->RandomKey('newnerimanhasim.students','public_id');
+            }
+            $StundetInfo = $this->RandomKey('newnerimanhasim.studentinfo','public_id');
+            $ClassId = $Array['ClassId'];
+            $SeasonId = $Array['SeasonId'];
+            $InsertStudentInfo = $this->AddData('INSERT INTO newnerimanhasim.studentinfo (public_id,student_id,class_id,period_id) VALUES (?,?,?,?)',[$StundetInfo,$PublicId,$ClassId,$SeasonId]);
+            if($InsertStudentInfo && $CheckStudent != 1){
+                return $this->AddData('INSERT INTO newnerimanhasim.students (public_id,name,surname,tcno,mtname,mtnumber,ftname,ftnumber,othername,othernumber) VALUES (?,?,?,?,?,?,?,?,?,?)',[$PublicId,$Array['Name'],$Array['SurName'],$Array['Tc'],$Array['MotherName'],$Array['MotherNumber'],$Array['FatherName'],$Array['FatherNumber'],$Array['OtherNick'],$Array['OtherNumber']]);
+            }else{
+                return $InsertStudentInfo;
+            }
+        }
+
     }
 }

@@ -7,9 +7,9 @@
     </div>
     <div class="input-group mb-2 w-100">
         <div class="input-group-prepend">
-            <div class="input-group-text w-100">Adı Soyadı:</div>
+            <div class="input-group-text w-100">Soyadı:</div>
         </div>
-        <input type="text" class="form-control student-surname" placeholder="Ad ve Soyad yazınız...">
+        <input type="text" class="form-control student-surname" placeholder="Soyad yazınız...">
     </div>
     <div class="input-group mb-2 w-100">
         <div class="input-group-prepend">

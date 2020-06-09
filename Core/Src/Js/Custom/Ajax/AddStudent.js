@@ -16,13 +16,23 @@ AddButton.addEventListener('click',()=>{
         'cid':C_I.options[C_I.selectedIndex].value,
         'change':AddButton.id,
     };
+    var Checker = false;
+    Object.keys(Send).forEach(e => {
+        if(Send[e] == ''){
+            Checker = true;
+        }
+    });
+    if(Checker){
+        alert('Gerekli Alanları Doldurunuz..!');
+        return false;
+    }
     var Url = `addStudent?Change=${Send['change']}&ClassID=${Send['cid']}&SeasonID=${Send['sid']}&StudentName=${Send['sname']}&StudentSurname=${Send['ssurname']}&StudentTc=${Send['stc']}&StudentMtName=${Send['smtname']}&StudentMtNumber=${Send['smtnumber']}&StudentFtName=${Send['sftname']}&StudentFtNumber=${Send['sftnumber']}&StudentOName=${Send['sother']}&StudentONumber=${Send['sothernumber']}`;
     var HTTP = new XMLHttpRequest();
     HTTP.onreadystatechange = function() {
         if (HTTP.readyState === 4){
             console.log('OK!');
             if(HTTP.status == 202){
-                // window.reload
+                location.reload();
             }
         };
     };
