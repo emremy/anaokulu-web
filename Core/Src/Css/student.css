@@ -1,0 +1,56 @@
+.single-aidat{
+    cursor: pointer;
+    }
+    .edit-aidat{
+    opacity: 0;
+    transition: .2s;
+    }
+    .single-aidat:hover .edit-aidat{
+    opacity: 1;
+    }
+    .edit-aidat:hover{
+    background: #142c44!important;
+    }
+    .ogrenci-getir input {
+        width: 70%;
+    }
+    
+    .ogrenci-getir button {
+        width: 28%;
+    }
+    
+    .ogrenci-getir {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .ogrenci-listesi {
+        margin-top: 0px;
+        background: #f9f9f9;
+        width: 70%;
+        border-top: 2px solid #ececec;
+        border-bottom: 2px solid #ececec;
+        max-height: 200px!important;
+        overflow-y: scroll;
+        position: absolute;
+        box-shadow: 4px 5px 9px 1px #00000021;
+        z-index: 2;
+    }
+    
+    .ogrenci-listesi li {
+        background: #f9f9f9;
+        border-radius: 0!important;
+        padding: 6px 13px;
+        color: #2d2d2d;
+        cursor: pointer;
+        font-size: 14px;
+        transition: .4s;
+    }
+    
+    li.list-group-item:hover {
+        background: #e0e0e0;
+    }
+    
+    .ogrenci-bul {
+        position: relative;
+    }

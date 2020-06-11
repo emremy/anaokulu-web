@@ -17,8 +17,8 @@
                 "(%s)-%s-%s-%s",
                 substr($Number, 0, 3),
                 substr($Number, 3, 3),
-                substr($Number, 5,2),
-                substr($Number, 8,9)
+                substr($Number, 6,2),
+                substr($Number, 8,2)
             );
             return $Result;
         }    
