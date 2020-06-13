@@ -28,21 +28,21 @@
               </ul>
           </div>
           <hr>
-          @if(!empty($SingeStudent))
-            <p style="line-height: 30px;"><span><strong class="mr-1">Adı Soyadı: </strong></span>
-              <br><span><strong class="mr-1">Sınıfı:</strong></span><span class="ml-3"><strong class="mr-1">Dönemi:</strong></span></p>
+          @if(!empty($SingleStudent['Student']))
+        <p style="line-height: 30px;"><span><strong class="mr-1">Adı Soyadı: </strong> {{$SingleStudent['Student']['name']}} {{$SingleStudent['Student']['surname']}}</span>
+        <br><span><strong class="mr-1">Sınıfı:</strong> {{$SingleStudent['Class']}} </span><span class="ml-3"><strong class="mr-1">Dönemi: {{$SingleStudent['Season']}}</strong></span></p>
                 <form class="form-inline ogrenci-ekle-form">  
                     @component('Modal.EditStudent')
-                        @slot('SingleStudent',$SingleStudent)
+                        @slot('Student',$SingleStudent['Student'])
                     @endcomponent
                 </form>
-              @else
+            @else
                 <div class="alert alert-warning">
                     <strong>Henüz Burada Bir Öğrenci Bulamadık</strong>
                 </div>
             @endif
           <hr class="my-2">
-          @if(!empty($SingeStudent))
+          @if(!empty($SingeStudent['Student']))
           <div class="mt-3">
               <button class="btn btn-danger">Öğrenciyi Sil</button>
               <button class="btn btn-info float-right">Aidat Göster</button>

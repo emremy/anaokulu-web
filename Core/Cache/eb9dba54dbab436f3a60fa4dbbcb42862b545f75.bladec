@@ -29,12 +29,12 @@
  </ul>
  </div>
  <hr>
- <?php if(!empty($SingeStudent)): ?>
- <p style="line-height: 30px;"><span><strong class="mr-1">Adı Soyadı: </strong></span>
- <br><span><strong class="mr-1">Sınıfı:</strong></span><span class="ml-3"><strong class="mr-1">Dönemi:</strong></span></p>
+ <?php if(!empty($SingleStudent['Student'])): ?>
+ <p style="line-height: 30px;"><span><strong class="mr-1">Adı Soyadı: </strong> <?php echo static::e($SingleStudent['Student']['name']); ?> <?php echo static::e($SingleStudent['Student']['surname']); ?></span>
+ <br><span><strong class="mr-1">Sınıfı:</strong> <?php echo static::e($SingleStudent['Class']); ?> </span><span class="ml-3"><strong class="mr-1">Dönemi: <?php echo static::e($SingleStudent['Season']); ?></strong></span></p>
  <form class="form-inline ogrenci-ekle-form">  
  <?php  $this->startComponent('Modal.EditStudent'); ?>
- <?php  $this->slot('SingleStudent',$SingleStudent); ?>
+ <?php  $this->slot('Student',$SingleStudent['Student']); ?>
  <?php  echo $this->renderComponent(); ?>
  </form>
  <?php else: ?>
@@ -43,7 +43,7 @@
  </div>
  <?php endif; ?>
  <hr class="my-2">
- <?php if(!empty($SingeStudent)): ?>
+ <?php if(!empty($SingeStudent['Student'])): ?>
  <div class="mt-3">
  <button class="btn btn-danger">Öğrenciyi Sil</button>
  <button class="btn btn-info float-right">Aidat Göster</button>

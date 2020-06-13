@@ -10,7 +10,7 @@
 
 
 @component('Modal.StudentAdd')
-
+    @slot('Student',null)
 @endcomponent
 @section('content')
 <div class="container">

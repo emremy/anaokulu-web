@@ -20,19 +20,21 @@ class StudentController extends MainController{
 
     public function index($Data){
         $this->SessionChecker(true,false);
+        $Data = $this->GetDataCustom($Data,['st','se','cl']);
+        if(!empty($Data)){
+            $Student = $this->Model->GetSingleStudent([$Data[0][1],$Data[1][1],$Data[2][1]]);
 
-        // $ReturnValue = [
-        //     'Title'=>$ClassesInfo['ClassName']." Sınıfı",
-        //     'Seasons'=>$this->Model->GetSeason(),
-        //     'Season'=>$SeasonName,
-        //     'Classes'=>$Classes,
-        //     'SeasonId'=>$SeasonID,
-        //     'ClassName'=>$ClassesInfo['ClassName'],
-        //     'ClassCount'=>$ClassesInfo['ClassCount'],
-        //     'Students'=>$ClassesInfo['Students'],
-        //     'Change'=>'add'
-        // ];
-        return self::View('Student.index');
+        }else{
+            $Student = '';
+        }
+        
+        $ReturnValue = [
+            'Title'=>"Öğrenci Kontrol Et",
+            'Seasons'=>$this->Model->GetSeason(),
+            'Change'=>'edit',
+            'SingleStudent'=>$Student
+        ];
+        return self::View('Student.index',$ReturnValue);
     }
 }
 ?>

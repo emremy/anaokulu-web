@@ -1,0 +1,47 @@
+<table class="table table-hover table-striped table-bordered">
+ <thead>
+ <tr>
+ <th><strong>#</strong></th>
+ <th>Adı Soyadı:</th>
+ <th>TC Kimlik No:</th>
+ <th>Anne Adı</th>
+ <th>Baba Adı</th>
+ <th>3.Kişi Tel</th>
+ <th class="text-center">Aidatlar</th>
+ </tr>
+ </thead>
+ <tbody>
+ <?php 
+ function ChangePhoneNumber($Number){
+ $Result = sprintf(
+ "(%s)-%s-%s-%s",
+ substr($Number, 0, 3),
+ substr($Number, 3, 3),
+ substr($Number, 6,2),
+ substr($Number, 8,2)
+ );
+ return $Result;
+ }    
+ ?>
+ <?php $__currentLoopData = $Students; $this->addLoop($__currentLoopData); foreach($__currentLoopData as $Student): $this->incrementLoopIndices(); $loop = $this->getFirstLoop(); ?>
+ <tr>
+ <td class="align-middle"></td>  
+ <td class="align-middle"><?php echo static::e($Student['name']); ?> <?php echo static::e($Student['surname']); ?></td>
+ <td class="align-middle"><?php echo static::e($Student['tcno']); ?></td>
+ <td class="align-middle">
+ <?php echo static::e($Student['mtname']); ?><span class="ml-2 badge badge-dark"><?php echo static::e(ChangePhoneNumber($Student['mtnumber'])); ?></span>
+ </td>
+ <td class="align-middle">
+ <?php echo static::e($Student['ftname']); ?><span class="ml-2 badge badge-dark"><?php echo static::e(ChangePhoneNumber($Student['ftnumber'])); ?></span>
+ </td>
+ <td class="align-middle"><?php echo static::e(ChangePhoneNumber($Student['othernumber'])); ?><span class="ml-2 badge badge-dark"><?php echo static::e($Student['othername']); ?></span>
+ </td>
+ <td class="align-middle text-center">
+ <router-link tag="button" to="/aidatlar" type="button" class="btn btn-info button-due-detail">
+ <i class="fa fa-edit"></i>
+ </router-link>
+ </td>
+ </tr>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </tbody>
+</table>

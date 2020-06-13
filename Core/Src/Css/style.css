@@ -288,3 +288,12 @@ button i {
 
 }
 
+.modal {
+    background: #00000075;
+    justify-content: center;
+    align-items: center;
+
+}
+.modal .modal-dialog {
+    min-width: 500px;
+}
