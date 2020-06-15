@@ -31,4 +31,12 @@ function ChangeResult(Value){
             AddStudentPanel.style.display = 'none';
         }
     }
+    if(Value == 'show-dues'){
+        var DuesPanel = document.querySelector('.dues-table');
+        if(DuesPanel.style.display == 'none'){
+            DuesPanel.style.display = 'flex';  
+        }else{
+            DuesPanel.style.display = 'none';
+        }
+    }
 }
