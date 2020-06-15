@@ -37,9 +37,12 @@
             <td class="align-middle">{{ChangePhoneNumber($Student['othernumber'])}}<span class="ml-2 badge badge-dark">{{$Student['othername']}}</span>
                 </td>
                 <td class="align-middle text-center">
-                <router-link tag="button" to="/aidatlar" type="button" class="btn btn-info button-due-detail">
+                <a href="./student?st={{$Student['public_id']}}&se={{$SeasonId}}&cl={{$ClassID}}">
+                <button class="btn btn-info button-due-detail">
+ 
                     <i class="fa fa-edit"></i>
-                </router-link>
+                </button>
+                </a>
                 </td>
             </tr>
         @endforeach
