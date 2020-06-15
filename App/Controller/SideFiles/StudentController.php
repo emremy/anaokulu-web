@@ -23,20 +23,19 @@ class StudentController extends MainController{
         $Data = $this->GetDataCustom($Data,['st','se','cl']);
         if(!empty($Data)){
             $Student = $this->Model->GetSingleStudent([$Data[0][1],$Data[1][1],$Data[2][1]]);
-            $Season=$Student['Season'];
-            $Seasons=$Student['StudentSeason'];
+            
+            $Information = $this->Model->GetSingleSeason($Data[1][1]);
+            $SeasonName = $Information['seasonName'][0]['season'];
         }else{
             $Student = '';
-            $Season='';
-            $Seasons='';
+            $SeasonName = '';
         }
-        var_dump($Student);
         $ReturnValue = [
             'Title'=>"Öğrenci Kontrol Et",
-            'Seasons'=>$Seasons,
+            'Seasons'=>$this->Model->GetSeason(),
             'Change'=>'edit',
             'SingleStudent'=>$Student,
-            'Season'=> $Season
+            'Season'=>$SeasonName
         ];
         return self::View('Student.index',$ReturnValue);
     }

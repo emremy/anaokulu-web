@@ -30,7 +30,7 @@
           <hr>
           @if(!empty($SingleStudent['Student']))
         <p style="line-height: 30px;"><span><strong class="mr-1">Adı Soyadı: </strong> {{$SingleStudent['Student']['name']}} {{$SingleStudent['Student']['surname']}}</span>
-        <br><span><strong class="mr-1">Sınıfı:</strong> {{$SingleStudent['Class']}} </span><span class="ml-3"><strong class="mr-1">Dönemi: </strong>{{$SingleStudent['Season']}}</span></p>
+        <br><span><strong class="mr-1">Sınıfı:</strong> {{$SingleStudent['Class']['class_name']}} </span><span class="ml-3"><strong class="mr-1">Dönemi: </strong>{{$SingleStudent['Season']}}</span></p>
         <form class="form-inline ogrenci-ekle-form">  
                     @component('Modal.EditStudent')
                         @slot('Student',$SingleStudent['Student'])

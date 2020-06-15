@@ -31,7 +31,7 @@
  <hr>
  <?php if(!empty($SingleStudent['Student'])): ?>
  <p style="line-height: 30px;"><span><strong class="mr-1">Adı Soyadı: </strong> <?php echo static::e($SingleStudent['Student']['name']); ?> <?php echo static::e($SingleStudent['Student']['surname']); ?></span>
- <br><span><strong class="mr-1">Sınıfı:</strong> <?php echo static::e($SingleStudent['Class']); ?> </span><span class="ml-3"><strong class="mr-1">Dönemi: </strong><?php echo static::e($SingleStudent['Season']); ?></span></p>
+ <br><span><strong class="mr-1">Sınıfı:</strong> <?php echo static::e($SingleStudent['Class']['class_name']); ?> </span><span class="ml-3"><strong class="mr-1">Dönemi: </strong><?php echo static::e($SingleStudent['Season']); ?></span></p>
  <form class="form-inline ogrenci-ekle-form">  
  <?php  $this->startComponent('Modal.EditStudent'); ?>
  <?php  $this->slot('Student',$SingleStudent['Student']); ?>
