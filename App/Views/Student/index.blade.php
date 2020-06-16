@@ -20,7 +20,7 @@
           <div class="form-group ogrenci-bul">
               <label style="margin-bottom: 15px;">Öğrenci İsmi:</label>
               <div class="ogrenci-getir">
-                  <input type="text" class="form-control" placeholder="İsim giriniz..." value="">
+                  <input type="text" class="form-control search-student" placeholder="İsim giriniz..." value="">
                   <button class="btn btn-primary">Bul</button>
               </div>
               <ul class="ogrenci-listesi list-group d-none">
@@ -129,4 +129,5 @@
 
 @section('script')
     <script src="./Core/Src/Js/Custom/ButtonActivity/Activity.js"></script>
+    <script src="./Core/Src/Js/Custom/Ajax/AutoComplete.js"></script>
 @endsection

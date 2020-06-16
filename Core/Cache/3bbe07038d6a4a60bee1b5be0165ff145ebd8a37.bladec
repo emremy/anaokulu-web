@@ -4,9 +4,9 @@
  <option disabled selected value></option>
  <?php $__currentLoopData = $Season; $this->addLoop($__currentLoopData); foreach($__currentLoopData as $Key => $Value): $this->incrementLoopIndices(); $loop = $this->getFirstLoop(); ?>
  <?php if($Key == $SelectedSeason): ?>
- <option value="<?php echo static::e($Value); ?>" selected><?php echo static::e($Key); ?></option>
+ <option value="<?php if(!empty($Change) && $Change == 'edit'): ?> ./student?se=<?php echo static::e($Value); ?> <?php else: ?> ./?s=<?php echo static::e($Value); ?> <?php endif; ?>" selected><?php echo static::e($Key); ?></option>
  <?php else: ?>
- <option value="<?php echo static::e($Value); ?>"><?php echo static::e($Key); ?></option>
+ <option value="<?php if(!empty($Change) && $Change == 'edit'): ?> ./student?se=<?php echo static::e($Value); ?> <?php else: ?> ./?s=<?php echo static::e($Value); ?> <?php endif; ?>"><?php echo static::e($Key); ?></option>
  <?php endif; ?>
 
  <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>

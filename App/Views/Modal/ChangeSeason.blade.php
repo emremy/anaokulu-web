@@ -4,9 +4,9 @@
         <option disabled selected value></option>
         @foreach($Season as $Key => $Value)
             @if($Key == $SelectedSeason)
-                <option value="{{$Value}}" selected>{{$Key}}</option>
+                <option value="@if(!empty($Change) && $Change == 'edit') ./student?se={{$Value}} @else ./?s={{$Value}} @endif" selected>{{$Key}}</option>
             @else
-                <option value="{{$Value}}">{{$Key}}</option>
+                <option value="@if(!empty($Change) && $Change == 'edit') ./student?se={{$Value}} @else ./?s={{$Value}} @endif">{{$Key}}</option>
             @endif
 
         @endforeach

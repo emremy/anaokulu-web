@@ -20,13 +20,21 @@ class StudentController extends MainController{
 
     public function index($Data){
         $this->SessionChecker(true,false);
-        $Data = $this->GetDataCustom($Data,['st','se','cl']);
-        if(!empty($Data)){
+        if(count($Data) == 1){
+            $Data = $this->GetDataCustom($Data,['se']);
+        }else{
+            $Data = $this->GetDataCustom($Data,['st','se','cl']);
+        }
+        if(!empty($Data) && count($Data) == 3){
             $Student = $this->Model->GetSingleStudent([$Data[0][1],$Data[1][1],$Data[2][1]]);
             
             $Information = $this->Model->GetSingleSeason($Data[1][1]);
             $SeasonName = $Information['seasonName'][0]['season'];
-        }else{
+        }elseif(!empty($Data) && count($Data) == 1){
+            $Information = $this->Model->GetSingleSeason($Data[0][1]);
+            $SeasonName = $Information['seasonName'][0]['season'];
+        }
+        if(empty($Student)){
             $Student = '';
             $SeasonName = '';
         }
