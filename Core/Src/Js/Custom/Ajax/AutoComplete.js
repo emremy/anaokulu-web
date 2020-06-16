@@ -1,67 +1,39 @@
-function bautofill_doDrop(el) {
-	
-	let items = [];
-	
-	try {
-		items = JSON.parse(el.dataset.items);
-	}
-	catch(e) {
-		console.error("Malformed JSON, couldn't populate list.");
-		return false;
-	}
-	
-	let foundMatch = false; 
-	let oldDropdown = document.getElementById("bautofill_dropDown");
-	
-	if(oldDropdown !== null) { oldDropdown.remove(); }
-	
-	let dropDownArea = document.createElement("div");
-	dropDownArea.id = "bautofill_dropDown";
-	dropDownArea.style.position = "absolute";
-	dropDownArea.style.top = el.offsetTop + el.offsetHeight + "px";
-	dropDownArea.style.left = el.offsetLeft + "px";
-	dropDownArea.style.width = el.offsetWidth-2 + "px"; 
-	
-	let dropDownList = document.createElement("ul");
-	dropDownList.classList.add("bautofill_dropDownList");
-	dropDownArea.appendChild(dropDownList);
+var input = document.querySelector('.search-student');
+var people = ['john doe', 'maria', 'paul', 'george', 'jimmy'];
+var results;
 
-	items.forEach(item => {
-	
-		if(item.indexOf(el.value) !== -1 && item !== el.value) {
-		
-			foundMatch = true;
-			
-			let listItem = document.createElement("li");
-			listItem.innerHTML = item; 
-			listItem.classList.add("bautofill_listItem");
-			listItem.addEventListener("mousedown", ev => {
-			
-				el.value = item;
-			});
-			
-			dropDownArea.getElementsByTagName("ul")[0].appendChild(listItem);
-		}
-	}); 
-	
-	if(foundMatch) {
-	
-		document.body.appendChild(dropDownArea);
-	}
+
+function autocomplete(val) {
+  var people_return = [];
+
+  for (i = 0; i < people.length; i++) {
+    if (val === people[i].slice(0, val.length)) {
+      people_return.push(people[i]);
+    }
+  }
+
+  return people_return;
 }
 
-Array.from(document.getElementsByClassName('search-student')).forEach(el => {
-	
-	
-	el.addEventListener("keydown", ev => { bautofill_doDrop(el); });
-	el.addEventListener("keyup", ev => { bautofill_doDrop(el); }); 
-	// el.addEventListener("focus", ev => { bautofill_doDrop(el); });
-	
-	el.addEventListener("blur", ev => {
-		
-		let oldDropdown = document.getElementById("bautofill_dropDown");
-		if(oldDropdown !== null) { oldDropdown.remove(); }
-	});
-	
-	
-});
+
+input.onkeyup = function(e) {
+  input_val = this.value;
+
+  if (input_val.length > 0) {
+    var people_to_show = [];
+
+    autocomplete_results = document.getElementById("autocomplete-results");
+    autocomplete_results.innerHTML = '';
+    people_to_show = autocomplete(input_val);
+    
+    for (i = 0; i < people_to_show.length; i++) {
+      autocomplete_results.innerHTML += '<li class="list-group-item">' + people_to_show[i] + '</li>';
+
+    }
+    autocomplete_results.style.display = 'block';
+  } else {
+    people_to_show = [];
+	autocomplete_results.innerHTML = '';
+	autocomplete_results.style.display = 'none';
+  }
+}

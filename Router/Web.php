@@ -17,3 +17,4 @@ Routers::Router('/deleteClass','Ajax|DeleteClass');
 Routers::Router('/students','Students|index');
 Routers::Router('/addStudent','Ajax|AddStudent');
 Routers::Router('/student','Student|index');
+Routers::Router('/searchStudent','Ajax|SearchStudent');

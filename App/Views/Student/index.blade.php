@@ -21,10 +21,10 @@
               <label style="margin-bottom: 15px;">Öğrenci İsmi:</label>
               <div class="ogrenci-getir">
                   <input type="text" class="form-control search-student" placeholder="İsim giriniz..." value="">
+                    
                   <button class="btn btn-primary">Bul</button>
               </div>
-              <ul class="ogrenci-listesi list-group d-none">
-                  <li v-for="index in 8" :key="index" class="list-group-item"></li>
+              <ul class="ogrenci-listesi list-group" id="autocomplete-results">
               </ul>
           </div>
           <hr>
