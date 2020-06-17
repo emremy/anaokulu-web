@@ -85,4 +85,13 @@ class Database{
             return false;
         }
     }
+
+    public function UpdateData($Sql,$Data=[]){
+        $Result = $this->Pdo->prepare($Sql)->execute($Data);
+        if($Result){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

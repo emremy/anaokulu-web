@@ -1,4 +1,4 @@
-function ChangeResult(Value){
+function ChangeResult(Value,DateId=null){
     if(Value == 'period'){
         var AddPeriodPanel  = document.querySelector('#add-period');
         if(AddPeriodPanel.style.display == 'none'){
@@ -48,5 +48,14 @@ function ChangeResult(Value){
             window.location = `./student?se=${Season}`;
         }
 
+    }
+    if(Value == 'Show-Dues-Panel'){
+        var SingleDuesPanel = document.querySelector('.dues-panel');
+        if(SingleDuesPanel.style.display == 'none'){
+            SingleDuesPanel.style.display = 'flex';
+            document.querySelector('.date-value').value = DateId;  
+        }else{
+            SingleDuesPanel.style.display = 'none';
+        }
     }
 }

@@ -10,7 +10,7 @@ class MainController{
 
     public function ClearData($Data){
         for($i=0;$i<count($Data);$i++){
-            $Data[$i] = htmlentities(htmlspecialchars(trim($Data[$i])));
+            $Data[$i] = htmlentities(trim($Data[$i]),ENT_QUOTES,'ISO-8859-5');
         }
         return $Data;
     }

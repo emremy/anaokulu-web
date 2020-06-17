@@ -83,6 +83,12 @@ class AjaxModels extends MainModels{
             }else{
                 return $InsertStudentInfo;
             }
+        }else if($Array['Activity'] == 'edit'){
+            $CheckStudent = $this->RowCount('SELECT * FROM newnerimanhasim.students WHERE public_id=?',[$Array['StudentId']]);
+            if($CheckStudent > 0){
+                $Data = [$Array['Name'],$Array['SurName'],$Array['Tc'],$Array['MotherName'],$Array['MotherNumber'],$Array['FatherName'],$Array['FatherNumber'],$Array['OtherNick'],$Array['OtherNumber'],$Array['StudentId']];
+                return $this->UpdateData('UPDATE newnerimanhasim.students SET name=?,surname=?,tcno=?,mtname=?,mtnumber=?,ftname=?,ftnumber=?,othername=?,othernumber=? WHERE public_id=?',$Data);
+            }
         }
     }
 
@@ -109,6 +115,24 @@ class AjaxModels extends MainModels{
             return $ListStudentInfo;
         }else{
             return $ListStudentInfo;
+        }
+    }
+
+    public function DeleteStudent($Key){
+        $CheckStudent = $this->RowCount('SELECT st.* FROM newnerimanhasim.students AS st RIGHT JOIN newnerimanhasim.studentinfo AS sti ON st.public_id = sti.student_id WHERE sti.student_id=?',[$Key]);
+        if($CheckStudent > 0){
+            $DeleteData = $this->DeleteData('DELETE newnerimanhasim.studentinfo,newnerimanhasim.students FROM newnerimanhasim.studentinfo INNER JOIN newnerimanhasim.students WHERE students.public_id=studentinfo.student_id AND studentinfo.student_id=?',[$Key]);
+            return $DeleteData;
+        }
+    }
+
+    public function AddDues($Array){
+        $CheckAmount = $this->RowCount('SELECT * FROM newnerimanhasim.dues WHERE student_id=? AND mountly=?',[$Array['StudentId'],$Array['Mountly']]);
+        if($CheckAmount > 0){
+            return $this->UpdateData('UPDATE newnerimanhasim.dues SET date=?,amount=? WHERE student_id=?',[$Array['Date'],$Array['Amount'],$Array['StudentId']]);
+        }else{
+            $DuesRandomId = $this->RandomKey('newnerimanhasim.dues','public_id');
+            return $this->AddData('INSERT INTO newnerimanhasim.dues (public_id,student_id,date,amount,mountly) VALUES (?,?,?,?,?)',[$DuesRandomId,$Array['StudentId'],$Array['Date'],$Array['Amount'],$Array['Mountly']]);
         }
     }
 }

@@ -30,6 +30,9 @@ class StudentController extends MainController{
             
             $Information = $this->Model->GetSingleSeason($Data[1][1]);
             $SeasonName = $Information['seasonName'][0]['season'];
+
+            $Dues = $this->Model->GetDues($Data[0][1]);
+            
         }elseif(!empty($Data) && count($Data) == 1){
             $Information = $this->Model->GetSingleSeason($Data[0][1]);
             $SeasonName = $Information['seasonName'][0]['season'];

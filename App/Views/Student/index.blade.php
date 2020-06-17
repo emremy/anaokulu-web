@@ -8,6 +8,10 @@
     {{$Title}}
 @endsection
 @section('content')
+@component('Modal.AddDues')
+@slot('Student',$SingleStudent['Student'])
+@slot('Season',$SingleStudent['Season'])
+@endcomponent
 <div class="container">
 <div class="row" style="margin-bottom: 80px;">
     <div class="col-6 pt-4 card mt-4 shadow">
@@ -45,9 +49,9 @@
           <hr class="my-2">
           @if(!empty($SingleStudent['Student']))
           <div class="mt-3">
-              <button class="btn btn-danger" onclick="">Öğrenciyi Sil</button>
+              <button class="btn btn-danger delete-from-student">Öğrenciyi Sil</button>
               <button class="btn btn-info float-right" onclick="ChangeResult('show-dues')">Aidat Göster</button>
-              <button class="btn btn-primary float-right mr-2">Bilgileri Kaydet</button>
+              <button class="btn btn-primary float-right mr-2 update-information" id="{{$Change}}">Bilgileri Kaydet</button>
           </div>
           @endif
       </div>
@@ -69,54 +73,104 @@
             </thead>
             <tbody>
                 <tr class="single-aidat">
-                    <td class="align-middle"><strong>Eylül</strong><span class="badge badge-info ml-2 edit-aidat"><i class="fa fa-edit"></i></span></td>
-                    <td class="align-middle">200 TL</td>
-                    <td class="align-middle">18 Eylül 2019</td>
+                    <td class="align-middle">
+                        <strong>Eylül</strong>
+                        <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','9')">
+                            <i class="fa fa-edit"></i>
+                        </span>
+                    </td>
+                    <td class="align-middle"></td>
+                    <td class="align-middle"></td>
                 </tr>
                 <tr class="single-aidat">
-                    <td class="align-middle"><strong>Ekim</strong><span class="badge badge-info ml-2 edit-aidat"><i class="fa fa-edit"></i></span></td>
-                    <td class="align-middle">200 TL</td>
-                    <td class="align-middle">18 Eylül 2019</td>
+                    <td class="align-middle">
+                        <strong>Ekim</strong>
+                        <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','10')">
+                            <i class="fa fa-edit"></i>
+                        </span>
+                    </td>
+                    <td class="align-middle"></td>
+                    <td class="align-middle"></td>
                 </tr>
                 <tr class="single-aidat">
-                    <td class="align-middle"><strong>Kasım</strong><span class="badge badge-info ml-2 edit-aidat"><i class="fa fa-edit"></i></span></td>
-                    <td class="align-middle">200 TL</td>
-                    <td class="align-middle">18 Eylül 2019</td>
+                    <td class="align-middle">
+                        <strong>Kasım</strong>
+                        <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','11')">
+                            <i class="fa fa-edit"></i>
+                        </span>
+                    </td>
+                    <td class="align-middle"></td>
+                    <td class="align-middle"></td>
                 </tr>
                 <tr class="single-aidat">
-                    <td class="align-middle"><strong>Aralık</strong><span class="badge badge-info ml-2 edit-aidat"><i class="fa fa-edit"></i></span></td>
-                    <td class="align-middle">200 TL</td>
-                    <td class="align-middle">18 Eylül 2019</td>
+                    <td class="align-middle">
+                        <strong>Aralık</strong>
+                        <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','12')">
+                            <i class="fa fa-edit"></i>
+                        </span>
+                    </td>
+                    <td class="align-middle"></td>
+                    <td class="align-middle"></td>
                 </tr>
                 <tr class="single-aidat">
-                    <td class="align-middle"><strong>Ocak</strong><span class="badge badge-info ml-2 edit-aidat"><i class="fa fa-edit"></i></span></td>
-                    <td class="align-middle">200 TL</td>
-                    <td class="align-middle">18 Eylül 2019</td>
+                    <td class="align-middle">
+                        <strong>Ocak</strong>
+                        <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','1')">
+                            <i class="fa fa-edit"></i>
+                        </span>
+                    </td>
+                    <td class="align-middle"></td>
+                    <td class="align-middle"></td>
                 </tr>
                 <tr class="single-aidat">
-                    <td class="align-middle"><strong>Şubat</strong><span class="badge badge-info ml-2 edit-aidat"><i class="fa fa-edit"></i></span></td>
-                    <td class="align-middle">200 TL</td>
-                    <td class="align-middle">18 Eylül 2019</td>
+                    <td class="align-middle">
+                        <strong>Şubat</strong>
+                        <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','2')">
+                            <i class="fa fa-edit"></i>
+                        </span>
+                    </td>
+                    <td class="align-middle"></td>
+                    <td class="align-middle"></td>
                 </tr>
                 <tr class="single-aidat">
-                    <td class="align-middle"><strong>Mart</strong><span class="badge badge-info ml-2 edit-aidat"><i class="fa fa-edit"></i></span></td>
-                    <td class="align-middle">200 TL</td>
-                    <td class="align-middle">18 Eylül 2019</td>
+                    <td class="align-middle">
+                        <strong>Mart</strong>
+                        <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','3')">
+                            <i class="fa fa-edit"></i>
+                        </span>
+                    </td>
+                    <td class="align-middle"></td>
+                    <td class="align-middle"></td>
                 </tr>
                 <tr class="single-aidat">
-                    <td class="align-middle"><strong>Nisan</strong><span class="badge badge-info ml-2 edit-aidat"><i class="fa fa-edit"></i></span></td>
-                    <td class="align-middle">200 TL</td>
-                    <td class="align-middle">18 Eylül 2019</td>
+                    <td class="align-middle">
+                        <strong>Nisan</strong>
+                        <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','4')">
+                            <i class="fa fa-edit"></i>
+                        </span>
+                    </td>
+                    <td class="align-middle"></td>
+                    <td class="align-middle"></td>
                 </tr>
                 <tr class="single-aidat">
-                    <td class="align-middle"><strong>Mayıs</strong><span class="badge badge-info ml-2 edit-aidat"><i class="fa fa-edit"></i></span></td>
-                    <td class="align-middle">200 TL</td>
-                    <td class="align-middle">18 Eylül 2019</td>
+                    <td class="align-middle">
+                        <strong>Mayıs</strong>
+                        <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','5')">
+                            <i class="fa fa-edit"></i>
+                        </span>
+                    </td>
+                    <td class="align-middle"></td>
+                    <td class="align-middle"></td>
                 </tr>
                 <tr class="single-aidat">
-                    <td class="align-middle"><strong>Haziran</strong><span class="badge badge-info ml-2 edit-aidat"><i class="fa fa-edit"></i></span></td>
-                    <td class="align-middle">200 TL</td>
-                    <td class="align-middle">18 Eylül 2019</td>
+                    <td class="align-middle">
+                        <strong>Haziran</strong>
+                        <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','6')">
+                            <i class="fa fa-edit"></i>
+                        </span>
+                    </td>
+                    <td class="align-middle"></td>
+                    <td class="align-middle"></td>
                 </tr>
             </tbody>
         </table>
@@ -130,4 +184,7 @@
 @section('script')
     <script src="./Core/Src/Js/Custom/ButtonActivity/Activity.js"></script>
     <script src="./Core/Src/Js/Custom/Ajax/AutoComplete.js"></script>
+    <script src="./Core/Src/Js/Custom/Ajax/EditStudent.js"></script>
+    <script src="./Core/Src/Js/Custom/Ajax/DeleteStudent.js"></script>
+    <script src="./Core/Src/Js/Custom/Ajax/AddDues.js"></script>
 @endsection
