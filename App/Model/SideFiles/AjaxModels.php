@@ -59,7 +59,7 @@ class AjaxModels extends MainModels{
     }
 
     public function StudentActivity($Array){
-        // var_dump($Array);
+
         if($Array['Activity'] == 'add'){
             
             $CheckStudent = $this->RowCount('SELECT * FROM newnerimanhasim.students WHERE name=:CName AND tcno=:TC',[':CName'=>$Array['Name'],':TC'=>$Array['Tc']]);
@@ -69,6 +69,10 @@ class AjaxModels extends MainModels{
 
             }else{
                 $PublicId = $this->RandomKey('newnerimanhasim.students','public_id');
+            }
+            $CheckTc = $this->RowCount('SELECT * FROM newnerimanhasim.students WHERE tcno=:TC',[':TC'=>$Array['Tc']]);
+            if($CheckTc > 0){
+                return false;
             }
             $StundetInfo = $this->RandomKey('newnerimanhasim.studentinfo','public_id');
             $ClassId = $Array['ClassId'];
@@ -85,12 +89,23 @@ class AjaxModels extends MainModels{
     public function LikeStudentName($Key,$SeasonId){
         if(is_numeric($Key)){
             $Key = intval($Key);
-            $ListStudentInfo = $this->ListData('SELECT st.* FROM newnerimanhasim.students AS st RIGHT JOIN newnerimanhasim.studentinfo AS sti ON st.public_id = sti.student_id WHERE tcno LIKE ?',["%$Key%"]);
+            $ListStudentInfo = $this->ListData('SELECT st.* FROM newnerimanhasim.students AS st RIGHT JOIN newnerimanhasim.studentinfo AS sti ON st.public_id = sti.student_id WHERE sti.period_id=? AND tcno LIKE ?',[$SeasonId,"%$Key%"]);
+            if($ListStudentInfo){
+                for ($i=0; $i < count($ListStudentInfo); $i++) {
+                    $ListStudentInfo[$i]['class_id'] = $this->ListData('SELECT class_id FROM newnerimanhasim.studentinfo WHERE period_id=? AND student_id=?',[$SeasonId,$ListStudentInfo[$i]['public_id']])[0]['class_id'];
+                }
+            }
 
         }else{
-            $ListStudentInfo = $this->ListData('SELECT st.* FROM newnerimanhasim.students AS st RIGHT JOIN newnerimanhasim.studentinfo AS sti ON st.public_id = sti.student_id WHERE  name LIKE ? OR surname LIKE ?',["%$Key%","%$Key%"]);
+            $ListStudentInfo = $this->ListData('SELECT st.* FROM newnerimanhasim.students AS st RIGHT JOIN newnerimanhasim.studentinfo AS sti ON st.public_id = sti.student_id WHERE sti.period_id=? AND (name LIKE ? OR surname LIKE ?)',[$SeasonId,"%$Key%","%$Key%"]);
+            if($ListStudentInfo){
+                for ($i=0; $i < count($ListStudentInfo); $i++) {
+                    $ListStudentInfo[$i]['class_id'] = $this->ListData('SELECT class_id FROM newnerimanhasim.studentinfo WHERE period_id=? AND student_id=?',[$SeasonId,$ListStudentInfo[$i]['public_id']])[0]['class_id'];
+                }
+            }
         }
         if($ListStudentInfo != false){
+
             return $ListStudentInfo;
         }else{
             return $ListStudentInfo;

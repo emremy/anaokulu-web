@@ -81,6 +81,7 @@ class AjaxController extends MainController{
     public function SearchStudent($Data){
         $Data = $this->GetDataCustom($Data,['keyValue','seasonValue']);
         $Result = $this->Model->LikeStudentName($Data[0][1],$Data[1][1]);
+        // var_dump($Result);
         echo json_encode($Result);
     }
 }

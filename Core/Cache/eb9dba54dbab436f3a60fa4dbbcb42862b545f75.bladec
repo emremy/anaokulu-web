@@ -21,9 +21,9 @@
  <div class="form-group ogrenci-bul">
  <label style="margin-bottom: 15px;">Öğrenci İsmi:</label>
  <div class="ogrenci-getir">
- <input type="text" class="form-control search-student" placeholder="İsim giriniz..." value="">
+ <input type="text" class="form-control search-student" placeholder="İsim giriniz...">
  <input type="hidden" id="data-content-student" value="">
- <button class="btn btn-primary">Bul</button>
+ <button class="btn btn-primary" onclick="ChangeResult('clear')">Temizle</button>
  </div>
  <ul class="ogrenci-listesi list-group" id="autocomplete-results" style="display:none;">
  </ul>

@@ -39,4 +39,14 @@ function ChangeResult(Value){
             DuesPanel.style.display = 'none';
         }
     }
+    if(Value == 'clear'){
+        var SeasonItem = document.querySelector('.season-list');
+        var Season = SeasonItem.options[SeasonItem.selectedIndex].value;
+        if(Season != undefined){
+            Season = Season.split('e=');
+            Season = Season[1].trim();
+            window.location = `./student?se=${Season}`;
+        }
+
+    }
 }
