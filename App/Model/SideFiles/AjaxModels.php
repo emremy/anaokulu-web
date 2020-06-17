@@ -45,7 +45,7 @@ class AjaxModels extends MainModels{
             if($DeleteClass){
                 $ReturnInfo = $this->RowCount('SELECT * FROM newnerimanhasim.studentinfo WHERE class_id=:ColumnName AND period_id=:SeasonID',[':ColumnName'=>$ClassID,':SeasonID'=>$SeasonID]);
                 if($ReturnInfo > 0){
-                    $DeleteInfo = $this->DeleteData('DELETE FROM newnerimanhasim.studentinfo WHERE class_id=:PublicID AND period_id=:SeasonID',[':PublicID'=>$ClassID,':SeasonID'=>$SeasonID]);
+                    $DeleteInfo = $this->DeleteData('DELETE newnerimanhasim.studentinfo,newnerimanhasim.students FROM newnerimanhasim.studentinfo INNER JOIN newnerimanhasim.students WHERE students.public_id=studentinfo.student_id AND (class_id=:PublicID AND period_id=:SeasonID)',[':PublicID'=>$ClassID,':SeasonID'=>$SeasonID]);
                     return $DeleteInfo;
                 }else{
                     return true;
