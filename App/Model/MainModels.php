@@ -18,7 +18,8 @@ class MainModels extends Database{
             'ftname' => 'VARCHAR(25) NOT NULL',
             'ftnumber' => 'BIGINT(11) NOT NULL',
             'othername' => 'VARCHAR(25)',
-            'othernumber' => 'BIGINT(11)'
+            'othernumber' => 'BIGINT(11)',
+            'create_time'=>'datetime NOT NULL DEFAULT CURRENT_TIMESTAMP'
         ]);
         $this->CreateTable('studentInfo',[
             'id' => 'INT(11) AUTO_INCREMENT PRIMARY KEY',
@@ -26,14 +27,16 @@ class MainModels extends Database{
             'student_id' => 'INT(6) NOT NULL',
             'class_id' => 'INT(6) NOT NULL',
             'period_id' => 'INT(6) NOT NULL',
+            'create_time' => 'datetime NOT NULL DEFAULT CURRENT_TIMESTAMP'
         ]);
         $this->CreateTable('dues',[
             'id' => 'INT(11) AUTO_INCREMENT PRIMARY KEY',
             'public_id' => 'INT(6) NOT NULL UNIQUE',
-            'student_id' => 'INT(6) NOT NULL UNIQUE',
+            'student_id' => 'INT(6) NOT NULL',
             'create_time' => 'datetime NOT NULL DEFAULT CURRENT_TIMESTAMP',
-            'date' => 'VARCHAR(10) NOT NULL',
-            'amount'=>'VARCHAR(10) NOT NULL',
+            'date' => 'VARCHAR(10)',
+            'amount'=>'VARCHAR(10)',
+            'mountly'=>'VARCHAR(20) NOT NULL'
         ]);
         $this->CreateTable('period',[
             'id' => 'INT(11) AUTO_INCREMENT PRIMARY KEY',

@@ -79,7 +79,42 @@ class AjaxModels extends MainModels{
             $SeasonId = $Array['SeasonId'];
             $InsertStudentInfo = $this->AddData('INSERT INTO newnerimanhasim.studentinfo (public_id,student_id,class_id,period_id) VALUES (?,?,?,?)',[$StundetInfo,$PublicId,$ClassId,$SeasonId]);
             if($InsertStudentInfo && $CheckStudent != 1){
-                return $this->AddData('INSERT INTO newnerimanhasim.students (public_id,name,surname,tcno,mtname,mtnumber,ftname,ftnumber,othername,othernumber) VALUES (?,?,?,?,?,?,?,?,?,?)',[$PublicId,$Array['Name'],$Array['SurName'],$Array['Tc'],$Array['MotherName'],$Array['MotherNumber'],$Array['FatherName'],$Array['FatherNumber'],$Array['OtherNick'],$Array['OtherNumber']]);
+                $StudentsAdd = $this->AddData('INSERT INTO newnerimanhasim.students (public_id,name,surname,tcno,mtname,mtnumber,ftname,ftnumber,othername,othernumber) VALUES (?,?,?,?,?,?,?,?,?,?)',[$PublicId,$Array['Name'],$Array['SurName'],$Array['Tc'],$Array['MotherName'],$Array['MotherNumber'],$Array['FatherName'],$Array['FatherNumber'],$Array['OtherNick'],$Array['OtherNumber']]);
+                $Months = [
+                    'EYLÜL',
+                    'EKİM',
+                    'KASIM',
+                    'ARALIK',
+                    'OCAK',
+                    'ŞUBAT',
+                    'MART',
+                    'NİSAN',
+                    'MAYIS',
+                    'HAZİRAN'
+                ];
+                $CheckerData = false;
+                for($i=0;$i<=9;$i++){
+                    $DuesID = $this->RandomKey('newnerimanhasim.dues','public_id');
+                    $DuesAdd = $this->AddData('INSERT INTO newnerimanhasim.dues (public_id,student_id,mountly) VALUES (?,?,?)',[$DuesID,$PublicId,$Months[$i]]);
+                    if(!$DuesAdd){
+                        $CheckerData = true;
+                    }
+                }
+                if($CheckerData){
+                    $this->DeleteData('DELETE FROM newnerimanhasim.students WHERE public_id=?',[$PublicId]);
+                    $this->DeleteData('DELETE FROM newnerimanhasim.stundetinfo WHERE stundet_id=?',[$PublicId]);
+                    $CheckDues = $this->RowCount('SELECT * FROM newnerimanhasim.dues WHERE stundet_id=?',[$PublicId]);
+                    if($CheckDues > 0){
+                        $this->DeleteData('DELETE FROM newnerimanhasim.dues WHERE stundet_id=?',[$PublicId]);
+                    }
+                    return true;
+                }else{
+                    if($DuesAdd){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                }
             }else{
                 return $InsertStudentInfo;
             }
