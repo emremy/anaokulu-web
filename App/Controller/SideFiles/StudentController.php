@@ -36,6 +36,8 @@ class StudentController extends MainController{
         }
         if(empty($Student)){
             $Student = '';
+        }
+        if(empty($Data)){
             $SeasonName = '';
         }
         $ReturnValue = [

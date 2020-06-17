@@ -80,6 +80,20 @@ class AjaxModels extends MainModels{
                 return $InsertStudentInfo;
             }
         }
+    }
 
+    public function LikeStudentName($Key,$SeasonId){
+        if(is_numeric($Key)){
+            $Key = intval($Key);
+            $ListStudentInfo = $this->ListData('SELECT st.* FROM newnerimanhasim.students AS st RIGHT JOIN newnerimanhasim.studentinfo AS sti ON st.public_id = sti.student_id WHERE tcno LIKE ?',["%$Key%"]);
+
+        }else{
+            $ListStudentInfo = $this->ListData('SELECT st.* FROM newnerimanhasim.students AS st RIGHT JOIN newnerimanhasim.studentinfo AS sti ON st.public_id = sti.student_id WHERE  name LIKE ? OR surname LIKE ?',["%$Key%","%$Key%"]);
+        }
+        if($ListStudentInfo != false){
+            return $ListStudentInfo;
+        }else{
+            return $ListStudentInfo;
+        }
     }
 }
