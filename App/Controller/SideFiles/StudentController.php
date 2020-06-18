@@ -37,7 +37,7 @@ class StudentController extends MainController{
             if(!$StudentCounter){
                 $StudentCounter = "0";
             }
-            
+            $SeasonId = $Data[1][1];
         }elseif(!empty($Data) && count($Data) == 1){
             $Information = $this->Model->GetSingleSeason($Data[0][1]);
             $SeasonName = $Information['seasonName'][0]['season'];
@@ -46,6 +46,7 @@ class StudentController extends MainController{
             if(!$StudentCounter){
                 $StudentCounter = "0";
             }
+            $SeasonId = $Data[0][1];
         }
         if(empty($Student)){
             $Student = '';
@@ -56,6 +57,7 @@ class StudentController extends MainController{
             $Dues = '';
             $Analytical = $this->Model->GetMonthDues('');
             $StudentCounter='0';
+            $SeasonId = '';
         }
 
 
@@ -68,7 +70,8 @@ class StudentController extends MainController{
             'Dues'=>$Dues,
             'StudentCount'=>$StudentCounter,
             'Date'=>$Analytical['Date'],
-            'DateCounter'=>$Analytical['Count']
+            'DateCounter'=>$Analytical['Count'],
+            'SeasonId' => $SeasonId
         ];
         return self::View('Student.index',$ReturnValue);
     }

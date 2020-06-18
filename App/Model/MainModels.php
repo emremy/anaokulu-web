@@ -103,7 +103,7 @@ class MainModels extends Database{
         setlocale(LC_ALL,'turkish');
         $Date = strtoupper(strftime('%B'));
         if($SeasonId != ''){
-            $Count = $this->Counter('SELECT * FROM newnerimanhasim.dues WHERE mountly=? AND amount IS NOT NULL AND season_id=?',[$Date,$SeasonId]);
+            $Count = $this->Counter('SELECT * FROM newnerimanhasim.dues WHERE mountly=? AND amount IS NULL AND season_id=?',[$Date,$SeasonId]);
             return ['Date'=>$Date,'Count'=>$Count];
         }else{
             return ['Date'=>$Date,'Count'=>'0'];

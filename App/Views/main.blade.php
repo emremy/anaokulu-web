@@ -33,10 +33,12 @@
             <strong>Öğrenci Sayısı : </strong>
             <span class="badge badge-success">{{$StudentCount}}</span>
         </span>
-        <span class="navbar-text navbar-nav my-2 my-lg-0 mr-3">
-            <strong>{{$Date}} Ayı Aidat Verenler : </strong>
-        <span class="badge badge-primary">{{$DateCounter}}</span>
-        </span>
+        <a href="./unpaidDues?se={{$SeasonId}}" style="text-decoration: none;">
+            <span class="navbar-text navbar-nav my-2 my-lg-0 mr-3">
+                    <strong>{{$Date}} Ayı Aidat Vermeyenler : </strong>
+                    <span class="badge badge-primary">{{$DateCounter}}</span>
+            </span>
+        </a>
         @component('Modal.ChangeSeason')
             @slot('Season',$Seasons)
             @slot('SelectedSeason',$Season)
