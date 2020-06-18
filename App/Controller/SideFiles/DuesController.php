@@ -31,7 +31,19 @@ class DuesController extends MainController{
             $Analytical = $this->Model->GetMonthDues($Data[0][1]);
             $StudentCounter = $this->Model->GetSeasonStudentCount($Data[0][1]);
             $Students = $this->Model->GetStudentsInfo($Data[0][1],$Data[1][1]);
-            var_dump($Students);
+            $Months = [
+                'EYLUL',
+                'EKIM',
+                'KASIM',
+                'ARALIK',
+                'OCAK',
+                'SUBAT',
+                'MART',
+                'NISAN',
+                'MAYIS',
+                'HAZIRAN'
+            ];
+            $SelectedMonth = $Data[1][1];
         }
 
 
@@ -44,7 +56,9 @@ class DuesController extends MainController{
             'Season'=>$SeasonName,
             'SeasonId'=>$SeasonID,
             'DuesPage'=>true,
-            'Students'=>$Students
+            'Students'=>$Students,
+            'Months'=>$Months,
+            'SelectedMonth'=>$SelectedMonth
         ];
 
 

@@ -7,10 +7,11 @@
             <th>Anne Adı</th>
             <th>Baba Adı</th>
             <th>3.Kişi Tel</th>
-            <th class="text-center">Aidatlar</th>
             @if(!empty($DuesPage) && $DuesPage == true)
-                <th>Sınıfı</th>
-            @endif
+            <th>Sınıfı</th>
+        @endif
+            <th class="text-center">Aidatlar</th>
+
         </tr>
     </thead>
     <tbody>
@@ -40,17 +41,28 @@
                 </td>
                 <td class="align-middle">{{ChangePhoneNumber($Student['othernumber'])}}<span class="ml-2 badge badge-dark">{{$Student['othername']}}</span>
                 </td>
-                <td class="align-middle text-center">
-                <a href="./student?st={{$Student['public_id']}}&se={{$SeasonId}}&cl={{$ClassID}}">
-                <button class="btn btn-info button-due-detail">
- 
-                    <i class="fa fa-edit"></i>
-                </button>
-                </a>
-                </td>
                 @if(!empty($DuesPage) && $DuesPage == true)
-                <td></td>
+            <td>{{$Student['class_name']}}</td>
                 @endif
+                <td class="align-middle text-center">
+                    @if(!empty($DuesPage) && $DuesPage == true)
+                        <a href="./student?st={{$Student['public_id']}}&se={{$SeasonId}}&cl={{$Student['class_id']}}">
+                            <button class="btn btn-info button-due-detail">
+            
+                                <i class="fa fa-edit"></i>
+                            </button>
+                        </a>
+                    @else
+                        <a href="./student?st={{$Student['public_id']}}&se={{$SeasonId}}&cl={{$ClassID}}">
+                            <button class="btn btn-info button-due-detail">
+            
+                                <i class="fa fa-edit"></i>
+                            </button>
+                        </a>
+                    @endif
+
+                </td>
+
             </tr>
         @endforeach
     </tbody>

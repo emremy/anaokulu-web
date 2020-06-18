@@ -5,9 +5,9 @@
         <option disabled selected value></option>
         @foreach($Season as $Key => $Value)
             @if($Key == $SelectedSeason)
-                <option value="@if(!empty($Change) && $Change == 'edit') ./student?se={{$Value}} @elseif(!empty($DuesPage) && $DuesPage == true) ./unpaidDues?se={{$Value}} @else ./?s={{$Value}} @endif" selected>{{$Key}}</option>
+                <option value="@if(!empty($Change) && $Change == 'edit') ./student?se={{$Value}} @elseif(!empty($DuesPage) && $DuesPage == true) ./unpaidDues?se={{$Value}}&mo={{$Date}} @else ./?s={{$Value}} @endif" selected>{{$Key}}</option>
             @else
-                <option value="@if(!empty($Change) && $Change == 'edit') ./student?se={{$Value}} @elseif(!empty($DuesPage) && $DuesPage == true) ./unpaidDues?se={{$Value}} @else ./?s={{$Value}} @endif">{{$Key}}</option>
+                <option value="@if(!empty($Change) && $Change == 'edit') ./student?se={{$Value}} @elseif(!empty($DuesPage) && $DuesPage == true) ./unpaidDues?se={{$Value}}&mo={{$Date}} @else ./?s={{$Value}} @endif">{{$Key}}</option>
             @endif
 
         @endforeach
