@@ -15,7 +15,7 @@
             <div class="card-body pt-0">
                 <div class="d-flex justify-content-between">
                     <div class="d-flex">
-                        <h3 class="mb-0 class-name">Aidat Vermeyen Öğrenciler (@if(!empty($Students)){{count($Students)}}@else 0 @endif)</h3>
+                    <h3 class="mb-0 class-name">{{$SelectedMonth}} Ayı Aidat Vermeyen Öğrenciler (@if(!empty($Students)){{count($Students)}}@else 0 @endif)</h3>
                     </div>
                     @if(!empty($Months))
                     <div class="d-flex">
