@@ -13,7 +13,7 @@ class StudentsModels extends MainModels{
 
     public function GetClasses($ClassID){
         $Result = array();
-        $CountStudent = $this->RowCount('SELECT * FROM newnerimanhasim.studentinfo WHERE class_id=:ClassID',[':ClassID'=>$ClassID]);
+        $CountStudent = $this->Counter('SELECT * FROM newnerimanhasim.studentinfo WHERE class_id=:ClassID',[':ClassID'=>$ClassID]);
         $Result['ClassCount'] = $CountStudent;
         $ClassInfo = $this->ListData("SELECT class_name FROM newnerimanhasim.class WHERE public_id=:PublicID",[':PublicID'=>$ClassID]);
         $Result['ClassName'] = $ClassInfo[0]['class_name'];
