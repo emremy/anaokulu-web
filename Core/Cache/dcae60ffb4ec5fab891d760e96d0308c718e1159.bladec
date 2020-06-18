@@ -26,7 +26,7 @@
  <h3 class="mb-0 class-name"><?php echo static::e($ClassName); ?> Sınıfının Öğrencileri (<?php echo static::e($ClassCount>0?$ClassCount:'0'); ?>)</h3>
  </div>
  <div class="print-custom">
- <button type="button" class="btn btn-primary" style="" onclick="ChangeResult('addStudent')">Öğrenci Ekle</button>
+ <button type="button" class="btn btn-primary"  onclick="ChangeResult('addStudent')">Öğrenci Ekle</button>
  <button type="button" class="btn btn-primary">Çıktı Al</button>
  </div>
 

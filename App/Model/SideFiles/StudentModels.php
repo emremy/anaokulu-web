@@ -32,7 +32,7 @@ class StudentModels extends MainModels{
         }
     }
 
-    public function GetDues($Key){
+    public function GetDues($Key,$SeasonId){
         return $this->ListData('SELECT * FROM newnerimanhasim.dues WHERE student_id=? AND season_id=? ORDER BY list_id ASC',[$Key,$SeasonId]);
         for($i =0; $i <count($Dues);$i++){
             $Result[] = $Dues[$i]; 
