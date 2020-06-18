@@ -26,7 +26,7 @@
                     </div>
                     <div class="print-custom">
                         <button type="button" class="btn btn-primary"  onclick="ChangeResult('addStudent')">Öğrenci Ekle</button>
-                        <button type="button" class="btn btn-primary">Çıktı Al</button>
+                        <button type="button" class="btn btn-primary" onclick="window.print()">Çıktı Al</button>
                     </div>
 
                 </div>
