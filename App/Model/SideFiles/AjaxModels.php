@@ -45,8 +45,12 @@ class AjaxModels extends MainModels{
             if($DeleteClass){
                 $ReturnInfo = $this->RowCount('SELECT * FROM newnerimanhasim.studentinfo WHERE class_id=:ColumnName AND period_id=:SeasonID',[':ColumnName'=>$ClassID,':SeasonID'=>$SeasonID]);
                 if($ReturnInfo > 0){
+                    $GetStudentId= $this->ListData('SELECT student_id FROM newnerimanhasim.studentinfo WHERE period_id=? AND class_id=?',[$SeasonID,$ClassID]);
+                    for($i=0;$i<count($GetStudentId);$i++){
+                        $DeleteDues = $this->DeleteData('DELETE FROM newnerimanhasim.dues WHERE student_id=?',[$GetStudentId[$i]['student_id']]);
+                    }
                     $DeleteInfo = $this->DeleteData('DELETE newnerimanhasim.studentinfo,newnerimanhasim.students FROM newnerimanhasim.studentinfo INNER JOIN newnerimanhasim.students WHERE students.public_id=studentinfo.student_id AND (class_id=:PublicID AND period_id=:SeasonID)',[':PublicID'=>$ClassID,':SeasonID'=>$SeasonID]);
-                    return $DeleteInfo;
+                    return true;
                 }else{
                     return true;
                 }
@@ -81,16 +85,16 @@ class AjaxModels extends MainModels{
             if($InsertStudentInfo && $CheckStudent != 1){
                 $StudentsAdd = $this->AddData('INSERT INTO newnerimanhasim.students (public_id,name,surname,tcno,mtname,mtnumber,ftname,ftnumber,othername,othernumber) VALUES (?,?,?,?,?,?,?,?,?,?)',[$PublicId,$Array['Name'],$Array['SurName'],$Array['Tc'],$Array['MotherName'],$Array['MotherNumber'],$Array['FatherName'],$Array['FatherNumber'],$Array['OtherNick'],$Array['OtherNumber']]);
                 $Months = [
-                    'EYLÜL',
-                    'EKİM',
+                    'EYLUL',
+                    'EKIM',
                     'KASIM',
                     'ARALIK',
                     'OCAK',
-                    'ŞUBAT',
+                    'SUBAT',
                     'MART',
-                    'NİSAN',
+                    'NISAN',
                     'MAYIS',
-                    'HAZİRAN'
+                    'HAZIRAN'
                 ];
                 $CheckerData = false;
                 for($i=0;$i<=9;$i++){

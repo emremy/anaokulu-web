@@ -28,6 +28,14 @@ class StudentsController extends MainController{
         $SeasonID = $Information['seasonName'][0]['public_id'];
         $Classes = $Information['class'];
         $ClassesInfo = $this->Model->GetClasses($ClassID);
+        if(!empty($SeasonID)){
+            $StudentCounter = $this->Model->GetSeasonStudentCount($SeasonID);
+            if(!$StudentCounter){
+                $StudentCounter = "0";
+            }
+        }else{
+            $StudentCounter = "0";
+        }
         $ReturnValue = [
             'Title'=>$ClassesInfo['ClassName']." Sınıfı",
             'Seasons'=>$this->Model->GetSeason(),
@@ -38,7 +46,8 @@ class StudentsController extends MainController{
             'ClassCount'=>$ClassesInfo['ClassCount'],
             'Students'=>$ClassesInfo['Students'],
             'ClassID'=>$ClassID,
-            'Change'=>'add'
+            'Change'=>'add',
+            'StudentCount'=>$StudentCounter
         ];
         return self::View('Students.index',$ReturnValue);
     }

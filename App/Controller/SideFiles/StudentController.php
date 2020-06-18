@@ -45,13 +45,22 @@ class StudentController extends MainController{
             $SeasonName = '';
             $Dues = '';
         }
+        if(!empty($Data[1][1])){
+            $StudentCounter = $this->Model->GetSeasonStudentCount($SeasonID);
+            if(!$StudentCounter){
+                $StudentCounter = "0";
+            }
+        }else{
+            $StudentCounter = "0";
+        }
         $ReturnValue = [
             'Title'=>"Öğrenci Kontrol Et",
             'Seasons'=>$this->Model->GetSeason(),
             'Change'=>'edit',
             'SingleStudent'=>$Student,
             'Season'=>$SeasonName,
-            'Dues'=>$Dues
+            'Dues'=>$Dues,
+            'StudentCount'=>$StudentCounter
         ];
         return self::View('Student.index',$ReturnValue);
     }

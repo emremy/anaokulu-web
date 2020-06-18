@@ -83,4 +83,14 @@ class MainModels extends Database{
         $Result['seasonName'] = $InfoSeason;
         return $Result;
     }
+
+    public function GetSeasonStudentCount($Data){
+        return $this->Counter('SELECT * FROM newnerimanhasim.studentinfo WHERE period_id=?',[$Data]);
+    }
+    public function GetMonthDues(){
+        setlocale(LC_TIME, 'turkish');
+        setlocale(LC_ALL,'turkish');
+        $Date = strtoupper(strftime('%B'));
+        echo $Date;
+    }
 }

@@ -25,8 +25,17 @@ class HomeController extends MainController{
 
         $SeasonName = $Information['seasonName'][0]['season'];
         $SeasonID = $Information['seasonName'][0]['public_id'];
+        if(!empty($SeasonID)){
+            $StudentCounter = $this->Model->GetSeasonStudentCount($SeasonID);
+            if(!$StudentCounter){
+                $StudentCounter = "0";
+            }
+        }else{
+            $StudentCounter = "0";
+        }
+        var_dump($this->Model->GetMonthDues());
         $Classes = $Information['class'];
-        return self::View('InSideHome.index',['Title'=>'Ogrenci Takip Sistemi','Seasons'=>$this->Model->GetSeason(),'Season'=>$SeasonName,'Classes'=>$Classes,'SeasonId'=>$SeasonID]);
+        return self::View('InSideHome.index',['Title'=>'Ogrenci Takip Sistemi','Seasons'=>$this->Model->GetSeason(),'Season'=>$SeasonName,'Classes'=>$Classes,'SeasonId'=>$SeasonID,'StudentCount'=>$StudentCounter]);
     }
 }
 ?>

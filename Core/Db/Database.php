@@ -76,6 +76,12 @@ class Database{
 
     }
 
+    public function Counter($Sql,$Data=[]){
+        $Result = $this->Pdo->prepare($Sql);
+        $Result->execute($Data);
+        return $Result->rowCount();
+    }
+
     public function DeleteData($Sql,$Data=[]){
         $Result = $this->Pdo->prepare($Sql);
         $Result->execute($Data);
