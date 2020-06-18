@@ -34,12 +34,14 @@
             <span class="badge badge-success">{{$StudentCount}}</span>
         </span>
         @if(!empty($SeasonId))
-            <a href="./unpaidDues?se={{$SeasonId}}&mo={{$Date}}" style="text-decoration: none;">
+
                 <span class="navbar-text navbar-nav my-2 my-lg-0 mr-3">
+                    <a href="./unpaidDues?se={{$SeasonId}}&mo={{$Date}}" class="not-givin">
                         <strong>{{$Date}} Ayı Aidat Vermeyenler : </strong>
                         <span class="badge badge-primary">{{$DateCounter}}</span>
-                </span>
-            </a>
+                    </a>
+                    </span>
+
         @else
             <span class="navbar-text navbar-nav my-2 my-lg-0 mr-3">
                 <strong>{{$Date}} Ayı Aidat Vermeyenler : </strong>
