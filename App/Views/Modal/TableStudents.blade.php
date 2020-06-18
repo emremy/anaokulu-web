@@ -22,10 +22,11 @@
             );
             return $Result;
         }    
+        $i=1;
         @endphp
         @foreach ($Students as $Student)
             <tr>
-            <td class="align-middle">{{$Student['id']}}</td>  
+            <td class="align-middle">{{$i++}}</td>  
             <td class="align-middle">{{$Student['name']}} {{$Student['surname']}}</td>
             <td class="align-middle">{{$Student['tcno']}}</td>
                 <td class="align-middle">

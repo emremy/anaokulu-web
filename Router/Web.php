@@ -21,3 +21,4 @@ Routers::Router('/student','Student|index');
 Routers::Router('/searchStudent','Ajax|SearchStudent');
 Routers::Router('/deleteStudent','Ajax|DeleteStudent');
 Routers::Router('/addDues','Ajax|AddDues');
+Routers::Router('/unpaidDues','Dues|index');
