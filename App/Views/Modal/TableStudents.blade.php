@@ -2,12 +2,15 @@
     <thead>
         <tr>
             <th><strong>#</strong></th>
-            <th>Adı Soyadı:</th>
-            <th>TC Kimlik No:</th>
+            <th>Adı Soyadı</th>
+            <th>TC Kimlik No</th>
             <th>Anne Adı</th>
             <th>Baba Adı</th>
             <th>3.Kişi Tel</th>
             <th class="text-center">Aidatlar</th>
+            @if(!empty($DuesPage) && $DuesPage == true)
+                <th>Sınıfı</th>
+            @endif
         </tr>
     </thead>
     <tbody>
@@ -35,7 +38,7 @@
                 <td class="align-middle">
                     {{$Student['ftname']}}<span class="ml-2 badge badge-dark">{{ChangePhoneNumber($Student['ftnumber'])}}</span>
                 </td>
-            <td class="align-middle">{{ChangePhoneNumber($Student['othernumber'])}}<span class="ml-2 badge badge-dark">{{$Student['othername']}}</span>
+                <td class="align-middle">{{ChangePhoneNumber($Student['othernumber'])}}<span class="ml-2 badge badge-dark">{{$Student['othername']}}</span>
                 </td>
                 <td class="align-middle text-center">
                 <a href="./student?st={{$Student['public_id']}}&se={{$SeasonId}}&cl={{$ClassID}}">
@@ -45,6 +48,9 @@
                 </button>
                 </a>
                 </td>
+                @if(!empty($DuesPage) && $DuesPage == true)
+                <td></td>
+                @endif
             </tr>
         @endforeach
     </tbody>
