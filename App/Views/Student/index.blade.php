@@ -12,6 +12,11 @@
 @slot('Student',$SingleStudent['Student'])
 @slot('Season',$SingleStudent['Season'])
 @endcomponent
+@component('Modal.DeleteStudent')
+@slot('Student',$SingleStudent['Student'])
+@slot('Season',$SingleStudent['Season'])
+@slot('Class',$SingleStudent['Class']['class_name'])
+@endcomponent
 <div class="container">
 <div class="row" style="margin-bottom: 80px;">
     <div class="col-6 pt-4 card mt-4 shadow">
@@ -49,14 +54,15 @@
           <hr class="my-2">
           @if(!empty($SingleStudent['Student']))
           <div class="mt-3">
-              <button class="btn btn-danger delete-from-student">Öğrenciyi Sil</button>
-              <button class="btn btn-info float-right" onclick="ChangeResult('show-dues')">Aidat Göster</button>
+              <button class="btn btn-danger" onclick="ChangeResult('delete-student')">Öğrenciyi Sil</button>
+              <button class="btn btn-info float-right hidden-show-dues-btn" onclick="ChangeResult('show-dues')">Aidat Gizle</button>
               <button class="btn btn-primary float-right mr-2 update-information" id="{{$Change}}">Bilgileri Kaydet</button>
           </div>
           @endif
       </div>
   </div>
-<div class="col-5 offset-1 pt-4 card mt-4 shadow dues-table" style="display:none;">
+  @if($Dues != '')
+<div class="col-5 offset-1 pt-4 card mt-4 shadow dues-table" style="">
     <div class="card-body pt-0">
         <div class="d-flex justify-content-between">
             <h4 class="mb-0">Aidat Bilgisi:<span class="font-weight-normal ml-2"></span></h4>
@@ -72,6 +78,7 @@
                 </tr>
             </thead>
             <tbody>
+
                 @foreach ($Dues as $Key => $Item)
                     <tr class="single-aidat">
                         <td class="align-middle">
@@ -84,11 +91,12 @@
                         <td class="align-middle {{$Item['public_id']}}">{{$Item['date']}}</td>
                     </tr>
                 @endforeach
+
             </tbody>
         </table>
     </div>
 </div>
-
+@endif
 </div>
 </div>    
 @endsection

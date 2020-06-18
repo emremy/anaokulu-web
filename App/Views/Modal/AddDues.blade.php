@@ -12,14 +12,14 @@
                 <hr>
                 <div class="form-inline justify-content-center">
 
-                    <div class="input-group mb-2" style="width: 70%;">
+                    <div class="input-group mb-2" style="width: 80%;">
                         <div class="input-group-prepend" style="width: 115px;">
                             <div class="input-group-text w-100">Tarih Giriniz:</div>
                         </div>
                         <input type="text" class="form-control custom-date" value="" placeholder="Tarih...">
                     </div>
 
-                    <div class="input-group mb-2" style="width: 70%;">
+                    <div class="input-group mb-2" style="width: 80%;">
                         <div class="input-group-prepend" style="width: 115px;">
                             <div class="input-group-text w-100">Aidat Giriniz:</div>
                         </div>

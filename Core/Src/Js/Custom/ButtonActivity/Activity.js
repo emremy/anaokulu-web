@@ -33,10 +33,14 @@ function ChangeResult(Value,DateId=null){
     }
     if(Value == 'show-dues'){
         var DuesPanel = document.querySelector('.dues-table');
+        var Btn = document.querySelector('.hidden-show-dues-btn');
+        
         if(DuesPanel.style.display == 'none'){
             DuesPanel.style.display = 'flex';  
+            Btn.textContent = 'Aidat Gizle';
         }else{
             DuesPanel.style.display = 'none';
+            Btn.textContent = 'Aidat Göster';
         }
     }
     if(Value == 'clear'){
@@ -59,6 +63,14 @@ function ChangeResult(Value,DateId=null){
             document.querySelector('.custom-date').value = InputC[1].textContent != undefined ? InputC[1].textContent:'';
         }else{
             SingleDuesPanel.style.display = 'none';
+        }
+    }
+    if(Value == 'delete-student'){
+        var DeleteStudentPanel = document.querySelector('.delete-student-panel');
+        if(DeleteStudentPanel.style.display == 'none'){
+            DeleteStudentPanel.style.display = 'flex';  
+        }else{
+            DeleteStudentPanel.style.display = 'none';
         }
     }
 }

@@ -10,6 +10,7 @@ class MainModels extends Database{
         $this->CreateTable('students',[
             'id' => 'INT(11) AUTO_INCREMENT PRIMARY KEY',
             'public_id' => 'INT(6) NOT NULL UNIQUE',
+            'name'=>'VARCHAR(25) NOT NULL',
             'sname' => 'VARCHAR(25) NOT NULL',
             'surname' => 'VARCHAR(40) NOT NULL',
             'tcno' => 'BIGINT(11) NOT NULL UNIQUE',
@@ -51,6 +52,7 @@ class MainModels extends Database{
             'public_id' => 'INT(6) NOT NULL UNIQUE',
             'class_name' => 'VARCHAR(15) NOT NULL',
             'create_time' => 'datetime NOT NULL DEFAULT CURRENT_TIMESTAMP',
+            'season_id'=>'INT(8) NOT NULL',
         ]);
 
         $this->Connect();
@@ -77,12 +79,19 @@ class MainModels extends Database{
         }
     }
     public function GetSingleSeason($Data){
-        $Result = array();
-        $InfoSeason = $this->ListData("SELECT season,public_id,create_time FROM newnerimanhasim.period WHERE public_id=:ID",[':ID'=>$Data]);
-        $InfoClass = $this->ListData("SELECT public_id,class_name FROM newnerimanhasim.class WHERE season_id=:ID ORDER BY class_name ASC",[':ID'=>$Data]);
-        $Result['class'] = $InfoClass;
-        $Result['seasonName'] = $InfoSeason;
-        return $Result;
+        if($Data != ''){
+            $Result = array();
+            $InfoSeason = $this->ListData("SELECT season,public_id,create_time FROM newnerimanhasim.period WHERE public_id=:ID",[':ID'=>$Data]);
+            
+            $InfoClass = $this->ListData("SELECT public_id,class_name FROM newnerimanhasim.class WHERE season_id=:ID ORDER BY class_name ASC",[':ID'=>$Data]);
+            
+            $Result['class'] = $InfoClass;
+            $Result['seasonName'] = $InfoSeason;
+            return $Result;
+        }else{
+            return false;
+        }
+
     }
 
     public function GetSeasonStudentCount($Data){
