@@ -88,11 +88,17 @@ class MainModels extends Database{
     public function GetSeasonStudentCount($Data){
         return $this->Counter('SELECT * FROM newnerimanhasim.studentinfo WHERE period_id=?',[$Data]);
     }
-    public function GetMonthDues(){
+    public function GetMonthDues($SeasonId){
+        
         setlocale(LC_TIME, 'turkish');
         setlocale(LC_ALL,'turkish');
         $Date = strtoupper(strftime('%B'));
-        $Count = $this->Counter('SELECT * FROM newnerimanhasim.dues WHERE mountly=? AND amount IS NOT NULL',[$Date]);
-        return ['Date'=>$Date,'Count'=>$Count];
+        if($SeasonId != ''){
+            $Count = $this->Counter('SELECT * FROM newnerimanhasim.dues WHERE mountly=? AND amount IS NOT NULL AND season_id=?',[$Date,$SeasonId]);
+            return ['Date'=>$Date,'Count'=>$Count];
+        }else{
+            return ['Date'=>$Date,'Count'=>'0'];
+        }
+
     }
 }

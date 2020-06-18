@@ -27,15 +27,25 @@ class StudentController extends MainController{
         }
         if(!empty($Data) && count($Data) == 3){
             $Student = $this->Model->GetSingleStudent([$Data[0][1],$Data[1][1],$Data[2][1]]);
-            
+            $Analytical = $this->Model->GetMonthDues($Data[1][1]);
             $Information = $this->Model->GetSingleSeason($Data[1][1]);
             $SeasonName = $Information['seasonName'][0]['season'];
 
             $Dues = $this->Model->GetDues($Data[0][1],$Data[1][1]);
+
+            $StudentCounter = $this->Model->GetSeasonStudentCount($Data[1][1]);
+            if(!$StudentCounter){
+                $StudentCounter = "0";
+            }
             
         }elseif(!empty($Data) && count($Data) == 1){
             $Information = $this->Model->GetSingleSeason($Data[0][1]);
             $SeasonName = $Information['seasonName'][0]['season'];
+            $Analytical = $this->Model->GetMonthDues($Data[0][1]);
+            $StudentCounter = $this->Model->GetSeasonStudentCount($Data[0][1]);
+            if(!$StudentCounter){
+                $StudentCounter = "0";
+            }
         }
         if(empty($Student)){
             $Student = '';
@@ -44,16 +54,11 @@ class StudentController extends MainController{
         if(empty($Data)){
             $SeasonName = '';
             $Dues = '';
+            $Analytical = $this->Model->GetMonthDues('');
+            $StudentCounter='0';
         }
-        if(!empty($Data[1][1])){
-            $StudentCounter = $this->Model->GetSeasonStudentCount($Data[1][1]);
-            if(!$StudentCounter){
-                $StudentCounter = "0";
-            }
-        }else{
-            $StudentCounter = "0";
-        }
-        $Analytical = $this->Model->GetMonthDues();
+
+
         $ReturnValue = [
             'Title'=>"Öğrenci Kontrol Et",
             'Seasons'=>$this->Model->GetSeason(),

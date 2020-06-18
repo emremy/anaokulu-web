@@ -36,7 +36,7 @@ class StudentsController extends MainController{
         }else{
             $StudentCounter = "0";
         }
-        $Analytical = $this->Model->GetMonthDues();
+        $Analytical = $this->Model->GetMonthDues($SeasonID);
         $ReturnValue = [
             'Title'=>$ClassesInfo['ClassName']." Sınıfı",
             'Seasons'=>$this->Model->GetSeason(),

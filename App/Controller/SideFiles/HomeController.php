@@ -33,7 +33,7 @@ class HomeController extends MainController{
         }else{
             $StudentCounter = "0";
         }
-        $Analytical = $this->Model->GetMonthDues();
+        $Analytical = $this->Model->GetMonthDues($SeasonID);
         $Classes = $Information['class'];
         return self::View('InSideHome.index',['Title'=>'Ogrenci Takip Sistemi','Seasons'=>$this->Model->GetSeason(),'Season'=>$SeasonName,'Classes'=>$Classes,'SeasonId'=>$SeasonID,'StudentCount'=>$StudentCounter,'Date'=>$Analytical['Date'],'DateCounter'=>$Analytical['Count']]);
     }
