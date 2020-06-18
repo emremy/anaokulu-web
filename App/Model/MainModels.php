@@ -36,7 +36,8 @@ class MainModels extends Database{
             'create_time' => 'datetime NOT NULL DEFAULT CURRENT_TIMESTAMP',
             'date' => 'VARCHAR(10)',
             'amount'=>'VARCHAR(10)',
-            'mountly'=>'VARCHAR(20) NOT NULL'
+            'mountly'=>'VARCHAR(20) NOT NULL',
+            'list_id'=>'INT(8) NOT NULL',
         ]);
         $this->CreateTable('period',[
             'id' => 'INT(11) AUTO_INCREMENT PRIMARY KEY',

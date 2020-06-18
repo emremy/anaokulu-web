@@ -124,11 +124,10 @@ class AjaxController extends MainController{
     }
 
     public function AddDues($Data){
-        $Data = $this->GetDataCustom($Data,['st','amo','da','moun']);
+        $Data = $this->GetDataCustom($Data,['st','amo','da','id']);
         $Data[1][1] = intval($Data[1][1]);
-        $Data[3][1] = intval($Data[3][1]);
         if(!empty($Data)){
-            $Result = $this->Model->AddDues(['StudentId'=>$Data[0][1],'Amount'=>$Data[1][1],'Date'=>$Data[2][1],'Mountly'=>$Data[3][1]]);
+            $Result = $this->Model->AddDues(['StudentId'=>$Data[0][1],'Amount'=>$Data[1][1],'Date'=>$Data[2][1],'Id'=>$Data[3][1]]);
             if($Result){
                 return http_response_code(202);
             }else{

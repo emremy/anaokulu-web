@@ -32,6 +32,6 @@ AddDuesBtn.addEventListener('click',()=>{
             }
         };
     };
-    HTTP.open('GET', `addDues?st=${ResultLoc.st}&amo=${CustomAmount}&da=${CustomDate}&moun=${DateValue}`);
+    HTTP.open('GET', `addDues?st=${ResultLoc.st}&amo=${CustomAmount}&da=${CustomDate}&id=${DateValue}`);
     HTTP.send()
 });

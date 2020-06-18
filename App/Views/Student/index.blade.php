@@ -72,106 +72,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="single-aidat">
-                    <td class="align-middle">
-                        <strong>Eylül</strong>
-                        <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','9')">
-                            <i class="fa fa-edit"></i>
-                        </span>
-                    </td>
-                    <td class="align-middle"></td>
-                    <td class="align-middle"></td>
-                </tr>
-                <tr class="single-aidat">
-                    <td class="align-middle">
-                        <strong>Ekim</strong>
-                        <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','10')">
-                            <i class="fa fa-edit"></i>
-                        </span>
-                    </td>
-                    <td class="align-middle"></td>
-                    <td class="align-middle"></td>
-                </tr>
-                <tr class="single-aidat">
-                    <td class="align-middle">
-                        <strong>Kasım</strong>
-                        <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','11')">
-                            <i class="fa fa-edit"></i>
-                        </span>
-                    </td>
-                    <td class="align-middle"></td>
-                    <td class="align-middle"></td>
-                </tr>
-                <tr class="single-aidat">
-                    <td class="align-middle">
-                        <strong>Aralık</strong>
-                        <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','12')">
-                            <i class="fa fa-edit"></i>
-                        </span>
-                    </td>
-                    <td class="align-middle"></td>
-                    <td class="align-middle"></td>
-                </tr>
-                <tr class="single-aidat">
-                    <td class="align-middle">
-                        <strong>Ocak</strong>
-                        <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','1')">
-                            <i class="fa fa-edit"></i>
-                        </span>
-                    </td>
-                    <td class="align-middle"></td>
-                    <td class="align-middle"></td>
-                </tr>
-                <tr class="single-aidat">
-                    <td class="align-middle">
-                        <strong>Şubat</strong>
-                        <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','2')">
-                            <i class="fa fa-edit"></i>
-                        </span>
-                    </td>
-                    <td class="align-middle"></td>
-                    <td class="align-middle"></td>
-                </tr>
-                <tr class="single-aidat">
-                    <td class="align-middle">
-                        <strong>Mart</strong>
-                        <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','3')">
-                            <i class="fa fa-edit"></i>
-                        </span>
-                    </td>
-                    <td class="align-middle"></td>
-                    <td class="align-middle"></td>
-                </tr>
-                <tr class="single-aidat">
-                    <td class="align-middle">
-                        <strong>Nisan</strong>
-                        <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','4')">
-                            <i class="fa fa-edit"></i>
-                        </span>
-                    </td>
-                    <td class="align-middle"></td>
-                    <td class="align-middle"></td>
-                </tr>
-                <tr class="single-aidat">
-                    <td class="align-middle">
-                        <strong>Mayıs</strong>
-                        <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','5')">
-                            <i class="fa fa-edit"></i>
-                        </span>
-                    </td>
-                    <td class="align-middle"></td>
-                    <td class="align-middle"></td>
-                </tr>
-                <tr class="single-aidat">
-                    <td class="align-middle">
-                        <strong>Haziran</strong>
-                        <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','6')">
-                            <i class="fa fa-edit"></i>
-                        </span>
-                    </td>
-                    <td class="align-middle"></td>
-                    <td class="align-middle"></td>
-                </tr>
+                @foreach ($Dues as $Key => $Item)
+                    <tr class="single-aidat">
+                        <td class="align-middle">
+                            <strong>{{$Item['mountly']}}</strong>
+                            <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','{{$Item['public_id']}}')">
+                                <i class="fa fa-edit"></i>
+                            </span>
+                        </td>
+                        <td class="align-middle {{$Item['public_id']}}">@if(!empty($Item['amount'])){{$Item['amount']}} TL @endif</td>
+                        <td class="align-middle {{$Item['public_id']}}">{{$Item['date']}}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

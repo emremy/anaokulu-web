@@ -53,7 +53,10 @@ function ChangeResult(Value,DateId=null){
         var SingleDuesPanel = document.querySelector('.dues-panel');
         if(SingleDuesPanel.style.display == 'none'){
             SingleDuesPanel.style.display = 'flex';
-            document.querySelector('.date-value').value = DateId;  
+            document.querySelector('.date-value').value = DateId;
+            var InputC = document.querySelectorAll(`.${CSS.escape(DateId)}`);
+            document.querySelector('.custom-amount').value = InputC[0].textContent != undefined ? InputC[0].textContent.split(" ")[0]:'';
+            document.querySelector('.custom-date').value = InputC[1].textContent != undefined ? InputC[1].textContent:'';
         }else{
             SingleDuesPanel.style.display = 'none';
         }

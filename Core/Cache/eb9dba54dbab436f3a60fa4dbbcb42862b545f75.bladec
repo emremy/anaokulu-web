@@ -73,106 +73,18 @@
  </tr>
  </thead>
  <tbody>
+ <?php $__currentLoopData = $Dues; $this->addLoop($__currentLoopData); foreach($__currentLoopData as $Key => $Item): $this->incrementLoopIndices(); $loop = $this->getFirstLoop(); ?>
  <tr class="single-aidat">
  <td class="align-middle">
- <strong>Eylül</strong>
- <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','9')">
+ <strong><?php echo static::e($Item['mountly']); ?></strong>
+ <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','<?php echo static::e($Item['public_id']); ?>')">
  <i class="fa fa-edit"></i>
  </span>
  </td>
- <td class="align-middle"></td>
- <td class="align-middle"></td>
+ <td class="align-middle <?php echo static::e($Item['public_id']); ?>"><?php if(!empty($Item['amount'])): ?><?php echo static::e($Item['amount']); ?> TL <?php endif; ?></td>
+ <td class="align-middle <?php echo static::e($Item['public_id']); ?>"><?php echo static::e($Item['date']); ?></td>
  </tr>
- <tr class="single-aidat">
- <td class="align-middle">
- <strong>Ekim</strong>
- <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','10')">
- <i class="fa fa-edit"></i>
- </span>
- </td>
- <td class="align-middle"></td>
- <td class="align-middle"></td>
- </tr>
- <tr class="single-aidat">
- <td class="align-middle">
- <strong>Kasım</strong>
- <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','11')">
- <i class="fa fa-edit"></i>
- </span>
- </td>
- <td class="align-middle"></td>
- <td class="align-middle"></td>
- </tr>
- <tr class="single-aidat">
- <td class="align-middle">
- <strong>Aralık</strong>
- <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','12')">
- <i class="fa fa-edit"></i>
- </span>
- </td>
- <td class="align-middle"></td>
- <td class="align-middle"></td>
- </tr>
- <tr class="single-aidat">
- <td class="align-middle">
- <strong>Ocak</strong>
- <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','1')">
- <i class="fa fa-edit"></i>
- </span>
- </td>
- <td class="align-middle"></td>
- <td class="align-middle"></td>
- </tr>
- <tr class="single-aidat">
- <td class="align-middle">
- <strong>Şubat</strong>
- <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','2')">
- <i class="fa fa-edit"></i>
- </span>
- </td>
- <td class="align-middle"></td>
- <td class="align-middle"></td>
- </tr>
- <tr class="single-aidat">
- <td class="align-middle">
- <strong>Mart</strong>
- <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','3')">
- <i class="fa fa-edit"></i>
- </span>
- </td>
- <td class="align-middle"></td>
- <td class="align-middle"></td>
- </tr>
- <tr class="single-aidat">
- <td class="align-middle">
- <strong>Nisan</strong>
- <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','4')">
- <i class="fa fa-edit"></i>
- </span>
- </td>
- <td class="align-middle"></td>
- <td class="align-middle"></td>
- </tr>
- <tr class="single-aidat">
- <td class="align-middle">
- <strong>Mayıs</strong>
- <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','5')">
- <i class="fa fa-edit"></i>
- </span>
- </td>
- <td class="align-middle"></td>
- <td class="align-middle"></td>
- </tr>
- <tr class="single-aidat">
- <td class="align-middle">
- <strong>Haziran</strong>
- <span class="badge badge-info ml-2 edit-aidat" onclick="ChangeResult('Show-Dues-Panel','6')">
- <i class="fa fa-edit"></i>
- </span>
- </td>
- <td class="align-middle"></td>
- <td class="align-middle"></td>
- </tr>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
  </tbody>
  </table>
  </div>
