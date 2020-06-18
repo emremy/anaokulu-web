@@ -47,7 +47,7 @@ class AjaxModels extends MainModels{
                 if($ReturnInfo > 0){
                     $GetStudentId= $this->ListData('SELECT student_id FROM newnerimanhasim.studentinfo WHERE period_id=? AND class_id=?',[$SeasonID,$ClassID]);
                     for($i=0;$i<count($GetStudentId);$i++){
-                        $DeleteDues = $this->DeleteData('DELETE FROM newnerimanhasim.dues WHERE student_id=?',[$GetStudentId[$i]['student_id']]);
+                        $DeleteDues = $this->DeleteData('DELETE FROM newnerimanhasim.dues WHERE student_id=? AND season_id=?',[$GetStudentId[$i]['student_id'],$SeasonID]);
                     }
                     $DeleteInfo = $this->DeleteData('DELETE newnerimanhasim.studentinfo,newnerimanhasim.students FROM newnerimanhasim.studentinfo INNER JOIN newnerimanhasim.students WHERE students.public_id=studentinfo.student_id AND (class_id=:PublicID AND period_id=:SeasonID)',[':PublicID'=>$ClassID,':SeasonID'=>$SeasonID]);
                     return true;
@@ -99,7 +99,7 @@ class AjaxModels extends MainModels{
                 $CheckerData = false;
                 for($i=0;$i<=9;$i++){
                     $DuesID = $this->RandomKey('newnerimanhasim.dues','public_id');
-                    $DuesAdd = $this->AddData('INSERT INTO newnerimanhasim.dues (public_id,student_id,mountly,list_id) VALUES (?,?,?,?)',[$DuesID,$PublicId,$Months[$i],$i]);
+                    $DuesAdd = $this->AddData('INSERT INTO newnerimanhasim.dues (public_id,student_id,mountly,list_id,season_id) VALUES (?,?,?,?,?)',[$DuesID,$PublicId,$Months[$i],$i,$SeasonId]);
                     if(!$DuesAdd){
                         $CheckerData = true;
                     }
