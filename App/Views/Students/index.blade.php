@@ -24,8 +24,11 @@
                         </button>
                         <h3 class="mb-0 class-name">{{$ClassName}} Sınıfının Öğrencileri ({{$ClassCount>0?$ClassCount:'0'}})</h3>
                     </div>
-                    <button type="button" class="btn btn-primary" style="margin-left:40%;" onclick="ChangeResult('addStudent')">Öğrenci Ekle</button>
-                    <button type="button" class="btn btn-primary">Çıktı Al</button>
+                    <div class="print-custom">
+                        <button type="button" class="btn btn-primary"  onclick="ChangeResult('addStudent')">Öğrenci Ekle</button>
+                        <button type="button" class="btn btn-primary">Çıktı Al</button>
+                    </div>
+
                 </div>
                 <hr class="mt-3">
                 @if (empty($Students))

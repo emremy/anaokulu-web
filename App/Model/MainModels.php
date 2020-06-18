@@ -91,6 +91,7 @@ class MainModels extends Database{
         setlocale(LC_TIME, 'turkish');
         setlocale(LC_ALL,'turkish');
         $Date = strtoupper(strftime('%B'));
-        echo $Date;
+        $Count = $this->Counter('SELECT * FROM newnerimanhasim.dues WHERE mountly=? AND amount IS NOT NULL',[$Date]);
+        return ['Date'=>$Date,'Count'=>$Count];
     }
 }

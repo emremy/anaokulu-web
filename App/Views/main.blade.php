@@ -34,8 +34,8 @@
             <span class="badge badge-success">{{$StudentCount}}</span>
         </span>
         <span class="navbar-text navbar-nav my-2 my-lg-0 mr-3">
-            <strong>Eylül Ayı Aidat Verenler : </strong>
-            <span class="badge badge-primary">400</span>
+            <strong>{{$Date}} Ayı Aidat Verenler : </strong>
+        <span class="badge badge-primary">{{$DateCounter}}</span>
         </span>
         @component('Modal.ChangeSeason')
             @slot('Season',$Seasons)
